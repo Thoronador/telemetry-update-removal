@@ -1,5 +1,7 @@
 # Telemetry update removal
 
+[![Build status](https://ci.appveyor.com/api/projects/status/yn2xym4ngubs090b?svg=true)](https://ci.appveyor.com/project/Thoronador/telemetry-update-removal)
+
 # About
 
 Once this program is finished, it will be able to detect and remove all
