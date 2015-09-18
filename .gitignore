@@ -1,0 +1,6 @@
+# binary and object directories
+bin/
+obj/
+
+# C#'s .suo files
+*.suo
