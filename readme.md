@@ -11,16 +11,16 @@ Instead wait for the next version.
 
 ##License, disclaimer and source code
 
-The program is released under the GNU General Public License
-version 3, a free software license. For the full text of the license
-consult the file GPL.txt or view it online at
+The program is released under the GNU General Public License version 3, a free
+software license. For the full text of the license consult the file GPL.txt or
+view it online at
   <http://www.gnu.org/licenses/gpl-3.0.html>
 
 This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
-Public License for more details.
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+more details.
 
-The program's source code is published at GitHub.com, the
-project itself is located at
-  <https://github.com/Thoronador/telemetry-update-removal>
+The program's source code is published at GitHub.com, the project itself is
+located at
+  <https://github.com/Thoronador/telemetry-update-removal>.
