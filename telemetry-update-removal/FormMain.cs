@@ -83,5 +83,44 @@ namespace telemetry_update_removal
             btnListInstalled.BackColor = System.Drawing.SystemColors.Control;
             btnListCompleteHistory.BackColor = System.Drawing.SystemColors.Control;
         }
+
+
+        /// <summary>
+        /// filters the shown update entries by their title - only updates
+        /// whose titles contain the given string will be shown
+        /// </summary>
+        /// <param name="filter">the filter text</param>
+        private void filterUpdatesByTitle(string filter)
+        {
+            int i = 0;
+            //Intercept empty values.
+            if (String.IsNullOrWhiteSpace(filter))
+            {
+                //Filter is empty, so let's show all updates.
+                for (i = 0; i < dgvUpdates.Rows.Count; ++i)
+                {
+                    dgvUpdates.Rows[i].Visible = true;
+                } //for
+                return;
+            }//if filter is empty
+
+            const int idxTitle = 3;
+            string lcFilter = filter.ToLower();
+            for (i = 0; i < dgvUpdates.Rows.Count; ++i)
+            {
+                dgvUpdates.Rows[i].Visible = dgvUpdates.Rows[i].Cells[idxTitle].Value.ToString().ToLower().Contains(lcFilter);
+            } //for
+        }
+
+        private void btnClearFilter_Click(object sender, EventArgs e)
+        {
+            tbFilterByTitle.Text = "";
+        }
+
+        private void tbFilterByTitle_TextChanged(object sender, EventArgs e)
+        {
+            btnClearFilter.Enabled = ("" != tbFilterByTitle.Text);
+            filterUpdatesByTitle(tbFilterByTitle.Text);
+        }
     } //class
 } //namespace

@@ -54,6 +54,9 @@ namespace telemetry_update_removal
             this.colTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnListCompleteHistory = new System.Windows.Forms.Button();
+            this.lblFilterbyTitle = new System.Windows.Forms.Label();
+            this.tbFilterByTitle = new System.Windows.Forms.TextBox();
+            this.btnClearFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,10 +86,10 @@ namespace telemetry_update_removal
             this.colStatus,
             this.colTitle,
             this.colID});
-            this.dgvUpdates.Location = new System.Drawing.Point(12, 41);
+            this.dgvUpdates.Location = new System.Drawing.Point(12, 67);
             this.dgvUpdates.Name = "dgvUpdates";
             this.dgvUpdates.RowHeadersVisible = false;
-            this.dgvUpdates.Size = new System.Drawing.Size(590, 380);
+            this.dgvUpdates.Size = new System.Drawing.Size(590, 354);
             this.dgvUpdates.TabIndex = 2;
             // 
             // colDate
@@ -129,11 +132,42 @@ namespace telemetry_update_removal
             this.btnListCompleteHistory.UseVisualStyleBackColor = true;
             this.btnListCompleteHistory.Click += new System.EventHandler(this.btnListCompleteHistory_Click);
             // 
+            // lblFilterbyTitle
+            // 
+            this.lblFilterbyTitle.AutoSize = true;
+            this.lblFilterbyTitle.Location = new System.Drawing.Point(12, 44);
+            this.lblFilterbyTitle.Name = "lblFilterbyTitle";
+            this.lblFilterbyTitle.Size = new System.Drawing.Size(65, 13);
+            this.lblFilterbyTitle.TabIndex = 4;
+            this.lblFilterbyTitle.Text = "Filter by title:";
+            // 
+            // tbFilterByTitle
+            // 
+            this.tbFilterByTitle.Location = new System.Drawing.Point(91, 41);
+            this.tbFilterByTitle.Name = "tbFilterByTitle";
+            this.tbFilterByTitle.Size = new System.Drawing.Size(291, 20);
+            this.tbFilterByTitle.TabIndex = 5;
+            this.tbFilterByTitle.TextChanged += new System.EventHandler(this.tbFilterByTitle_TextChanged);
+            // 
+            // btnClearFilter
+            // 
+            this.btnClearFilter.Enabled = false;
+            this.btnClearFilter.Location = new System.Drawing.Point(388, 39);
+            this.btnClearFilter.Name = "btnClearFilter";
+            this.btnClearFilter.Size = new System.Drawing.Size(75, 23);
+            this.btnClearFilter.TabIndex = 6;
+            this.btnClearFilter.Text = "Clear filter";
+            this.btnClearFilter.UseVisualStyleBackColor = true;
+            this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 433);
+            this.Controls.Add(this.btnClearFilter);
+            this.Controls.Add(this.tbFilterByTitle);
+            this.Controls.Add(this.lblFilterbyTitle);
             this.Controls.Add(this.btnListCompleteHistory);
             this.Controls.Add(this.dgvUpdates);
             this.Controls.Add(this.btnListInstalled);
@@ -156,6 +190,9 @@ namespace telemetry_update_removal
         private System.Windows.Forms.DataGridViewTextBoxColumn colTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.Button btnListCompleteHistory;
+        private System.Windows.Forms.Label lblFilterbyTitle;
+        private System.Windows.Forms.TextBox tbFilterByTitle;
+        private System.Windows.Forms.Button btnClearFilter;
     }
 }
 
