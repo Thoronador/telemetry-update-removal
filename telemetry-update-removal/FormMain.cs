@@ -34,10 +34,10 @@ namespace telemetry_update_removal
             disableListActionButtons();
             btnListInstalled.BackColor = System.Drawing.Color.Yellow;
             var instUpd = Updates.listInstalledUpdates();
-            dataGridView1.Rows.Clear();
+            dgvUpdates.Rows.Clear();
             foreach (var item in instUpd)
             {
-                dataGridView1.Rows.Add(new string[] {item.date.ToString(),
+                dgvUpdates.Rows.Add(new string[] {item.date.ToString(),
                     Updates.UpdateOperationToString(item.operation),
                     Updates.OperationResultCodeToString(item.result),
                     item.title, item.ID });
@@ -53,10 +53,10 @@ namespace telemetry_update_removal
             disableListActionButtons();
             btnListCompleteHistory.BackColor = System.Drawing.Color.Yellow;
             var instUpd = Updates.listUpdateHistory();
-            dataGridView1.Rows.Clear();
+            dgvUpdates.Rows.Clear();
             foreach (var item in instUpd)
             {
-                dataGridView1.Rows.Add(new string[] { item.date.ToString(),
+                dgvUpdates.Rows.Add(new string[] { item.date.ToString(),
                     Updates.UpdateOperationToString(item.operation),
                     Updates.OperationResultCodeToString(item.result),
                     item.title, item.ID });

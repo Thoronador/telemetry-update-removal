@@ -47,14 +47,14 @@ namespace telemetry_update_removal
         private void InitializeComponent()
         {
             this.btnListInstalled = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvUpdates = new System.Windows.Forms.DataGridView();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnListCompleteHistory = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).BeginInit();
             this.SuspendLayout();
             // 
             // btnListInstalled
@@ -68,26 +68,26 @@ namespace telemetry_update_removal
             this.btnListInstalled.UseVisualStyleBackColor = true;
             this.btnListInstalled.Click += new System.EventHandler(this.btnListInstalled_Click);
             // 
-            // dataGridView1
+            // dgvUpdates
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvUpdates.AllowUserToAddRows = false;
+            this.dgvUpdates.AllowUserToDeleteRows = false;
+            this.dgvUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUpdates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvUpdates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUpdates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDate,
             this.colOperation,
             this.colStatus,
             this.colTitle,
             this.colID});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 41);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(590, 220);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvUpdates.Location = new System.Drawing.Point(12, 41);
+            this.dgvUpdates.Name = "dgvUpdates";
+            this.dgvUpdates.RowHeadersVisible = false;
+            this.dgvUpdates.Size = new System.Drawing.Size(590, 380);
+            this.dgvUpdates.TabIndex = 2;
             // 
             // colDate
             // 
@@ -133,13 +133,14 @@ namespace telemetry_update_removal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 273);
+            this.ClientSize = new System.Drawing.Size(614, 433);
             this.Controls.Add(this.btnListCompleteHistory);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvUpdates);
             this.Controls.Add(this.btnListInstalled);
+            this.MinimumSize = new System.Drawing.Size(400, 150);
             this.Name = "FormMain";
             this.Text = "Telemetry update removal";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,7 +149,7 @@ namespace telemetry_update_removal
         #endregion
 
         private System.Windows.Forms.Button btnListInstalled;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvUpdates;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
