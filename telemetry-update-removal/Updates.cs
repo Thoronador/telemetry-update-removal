@@ -22,6 +22,11 @@ using WUApiLib;
 
 namespace telemetry_update_removal
 {
+    /// <summary>
+    /// Provides some basic functionality to list installed updates and/or the
+    /// complete update history for all Microsoft updates on the current
+    /// machine.
+    /// </summary>
     public class Updates
     {
         /// <summary>

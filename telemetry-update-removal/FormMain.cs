@@ -66,18 +66,38 @@ namespace telemetry_update_removal
             enableListActionButtons();
         }
 
+
+        /// <summary>
+        /// Disables the buttons that can be used to reload the update list.
+        /// This can be used while a reload of the list is in progress to avoid
+        /// that the user accidentally clicks the button more than once and
+        /// thus triggers more than one reload request, which would take longer
+        /// than necessary.
+        /// </summary>
         private void disableListActionButtons()
         {
             btnListInstalled.Enabled = false;
             btnListCompleteHistory.Enabled = false;
         }
 
+
+        /// <summary>
+        /// Re-enables the buttons that can be used to reload the update list.
+        /// Use this after call to disableListActionButtons() as soon as the
+        /// reload process is finished. Otherwise the user will not be able to
+        /// reload the update list again.
+        /// </summary>
         private void enableListActionButtons()
         {
             btnListInstalled.Enabled = true;
             btnListCompleteHistory.Enabled = true;
         }
 
+
+        /// <summary>
+        /// Resets the background colour of both "list updates" buttons to the
+        /// default that they had when the application started.
+        /// </summary>
         private void resetButtonColours()
         {
             btnListInstalled.BackColor = System.Drawing.SystemColors.Control;

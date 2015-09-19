@@ -21,6 +21,9 @@ using System.Collections.Generic;
 
 namespace telemetry_update_removal
 {
+    /// <summary>
+    /// Provides functions to check whether a certain update is installed.
+    /// </summary>
     public class InstalledUpdates
     {
         /// <summary>
