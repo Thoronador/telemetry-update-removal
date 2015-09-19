@@ -9,7 +9,7 @@ namespace telemetry_update_removal
         /// <summary>
         /// aux. structure to hold information about an update operation
         /// </summary>
-        public struct UpdateOpInfo
+        public class UpdateOpInfo
         {
             /// <summary>
             /// title of the update
@@ -25,28 +25,110 @@ namespace telemetry_update_removal
             /// time of the (un-)installation
             /// </summary>
             public DateTime date;
+
+            /// <summary>
+            /// the type of update operation - install or uninstall
+            /// </summary>
+            public UpdateOperation operation;
+
+            /// <summary>
+            /// result code of the update
+            /// </summary>
+            public OperationResultCode result;
+
+            /// <summary>
+            /// default constructor: initializes all members
+            /// </summary>
+            public UpdateOpInfo()
+            {
+                title = "";
+                ID = "";
+                date = DateTime.MinValue;
+                operation = UpdateOperation.uoUninstallation;
+                result = OperationResultCode.orcNotStarted;
+            }
         } //struct
+
+
+        /// <summary>
+        /// returns a human-readable string to describe the passed
+        /// UpdateOperation value (e.g. "Installation" or "Uninstallation",
+        /// depending on what the value indicates)
+        /// </summary>
+        /// <param name="value">UpdateOperation value that shall be represented
+        /// as string</param>
+        /// <returns>string that describes the update operation</returns>
+        public static string UpdateOperationToString(UpdateOperation value)
+        {
+            switch (value)
+            {
+                case UpdateOperation.uoInstallation:
+                    return "Installation";
+                case UpdateOperation.uoUninstallation:
+                    return "Uninstallation";
+                default:
+                    return "unknown operation";
+            } //switch
+        }
+
+
+        /// <summary>
+        /// returns a human-readable string to describe the passed
+        /// OperationResultCode value (e.g. "Succeeded", "Failed", etc.,
+        /// depending on whether the code indicates success, failure or any
+        /// other update result)
+        /// </summary>
+        /// <param name="orc">WUApiLib.OperationResultCode value</param>
+        /// <returns>string that describes the operation result code value</returns>
+        public static string OperationResultCodeToString(OperationResultCode orc)
+        {
+            switch (orc)
+            {
+                case OperationResultCode.orcAborted:
+                    return "Aborted";
+                case OperationResultCode.orcFailed:
+                    return "Failed";
+                case OperationResultCode.orcInProgress:
+                    return "In progress";
+                case OperationResultCode.orcNotStarted:
+                    return "Not started";
+                case OperationResultCode.orcSucceeded:
+                    return "Succeeded";
+                case OperationResultCode.orcSucceededWithErrors:
+                    return "Succeeded with errors";
+                default:
+                    return "unknown";
+            } //swi
+        }
         
 
         /// <summary>
-        /// list update history
+        /// lists the update history
         /// </summary>
-        /// <returns>returns the applied updates as list of strings with date and title of update</returns>
-        public static List<string> listUpdateHistory()
+        /// <returns>returns the applied updates as list of UpdateOpInfo structures</returns>
+        public static List<UpdateOpInfo> listUpdateHistory()
         {
             UpdateSession session = new UpdateSession();
             IUpdateSearcher updateSearcher = session.CreateUpdateSearcher();
             int count = updateSearcher.GetTotalHistoryCount();
             var history = updateSearcher.QueryHistory(0, count);
 
-            List<string> result = new List<string>();
+            List<UpdateOpInfo> result = new List<UpdateOpInfo>();
             for (int i = 0; i < count; ++i)
-                result.Add(history[i].Date.ToString() + " - " + history[i].Title);
+            {
+                UpdateOpInfo opInfo = new UpdateOpInfo();
+                opInfo.date = history[i].Date;
+                opInfo.ID = history[i].UpdateIdentity.UpdateID;
+                opInfo.operation = history[i].Operation;
+                opInfo.result = history[i].ResultCode;
+                opInfo.title = history[i].Title;
+                
+                result.Add(opInfo);
+            } //for
 
             history = null;
             updateSearcher = null;
             session = null;
-
             return result;
         }
 
@@ -72,6 +154,8 @@ namespace telemetry_update_removal
                     ud.title = upd.Title;
                     ud.ID = upd.UpdateIdentity.UpdateID;
                     ud.date = upd.Date;
+                    ud.operation = upd.Operation;
+                    ud.result = upd.ResultCode;
                     result.Add(ud);
                 } //if
                 upd = null;

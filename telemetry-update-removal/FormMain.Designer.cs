@@ -28,24 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnListInstalled = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOperation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnListCompleteHistory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnListInstalled
             // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "List installed updates from history";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnListInstalled.AutoSize = true;
+            this.btnListInstalled.Location = new System.Drawing.Point(12, 12);
+            this.btnListInstalled.Name = "btnListInstalled";
+            this.btnListInstalled.Size = new System.Drawing.Size(179, 23);
+            this.btnListInstalled.TabIndex = 0;
+            this.btnListInstalled.Text = "List installed updates from history";
+            this.btnListInstalled.UseVisualStyleBackColor = true;
+            this.btnListInstalled.Click += new System.EventHandler(this.btnListInstalled_Click);
             // 
             // dataGridView1
             // 
@@ -58,6 +61,8 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDate,
+            this.colOperation,
+            this.colStatus,
             this.colTitle,
             this.colID});
             this.dataGridView1.Location = new System.Drawing.Point(12, 41);
@@ -72,6 +77,18 @@
             this.colDate.Name = "colDate";
             this.colDate.Width = 55;
             // 
+            // colOperation
+            // 
+            this.colOperation.HeaderText = "Operation";
+            this.colOperation.Name = "colOperation";
+            this.colOperation.Width = 78;
+            // 
+            // colStatus
+            // 
+            this.colStatus.HeaderText = "Status";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.Width = 62;
+            // 
             // colTitle
             // 
             this.colTitle.HeaderText = "Title";
@@ -84,13 +101,24 @@
             this.colID.Name = "colID";
             this.colID.Width = 43;
             // 
+            // btnListCompleteHistory
+            // 
+            this.btnListCompleteHistory.Location = new System.Drawing.Point(197, 12);
+            this.btnListCompleteHistory.Name = "btnListCompleteHistory";
+            this.btnListCompleteHistory.Size = new System.Drawing.Size(185, 23);
+            this.btnListCompleteHistory.TabIndex = 3;
+            this.btnListCompleteHistory.Text = "List complete update history";
+            this.btnListCompleteHistory.UseVisualStyleBackColor = true;
+            this.btnListCompleteHistory.Click += new System.EventHandler(this.btnListCompleteHistory_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 273);
+            this.Controls.Add(this.btnListCompleteHistory);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnListInstalled);
             this.Name = "FormMain";
             this.Text = "Telemetry update removal";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -101,11 +129,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnListInstalled;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOperation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.Button btnListCompleteHistory;
     }
 }
 
