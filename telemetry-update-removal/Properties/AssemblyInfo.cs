@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("telemetry-update-removal")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hewlett-Packard")]
+[assembly: AssemblyCompany("Thoronador")]
 [assembly: AssemblyProduct("telemetry-update-removal")]
-[assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2015")]
+[assembly: AssemblyCopyright("Copyright © 2015 Thoronador")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
