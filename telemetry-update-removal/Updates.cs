@@ -134,6 +134,44 @@ namespace telemetry_update_removal
 
 
         /// <summary>
+        /// checks whether an entry of the update history is a successful
+        /// installation operation
+        /// </summary>
+        /// <param name="uhe">an update history entry</param>
+        /// <returns>Returns true, if the entry marks a successful installation.</returns>
+        private static bool isInstallSuccess(IUpdateHistoryEntry uhe)
+        {
+            if (uhe == null)
+                return false;
+            if (uhe.Operation == UpdateOperation.uoInstallation)
+            {
+                return (uhe.ResultCode == OperationResultCode.orcSucceeded
+                    || uhe.ResultCode == OperationResultCode.orcSucceededWithErrors);
+            }
+            return false;
+        }
+
+
+        /// <summary>
+        /// checks whether an entry of the update history is a successful
+        /// uninstallation operation
+        /// </summary>
+        /// <param name="uhe">an update history entry</param>
+        /// <returns>Returns true, if the entry marks a successful uninstallation.</returns>
+        private static bool isUninstallSuccess(IUpdateHistoryEntry uhe)
+        {
+            if (uhe == null)
+                return false;
+            if (uhe.Operation == UpdateOperation.uoUninstallation)
+            {
+                return (uhe.ResultCode == OperationResultCode.orcSucceeded
+                    || uhe.ResultCode == OperationResultCode.orcSucceededWithErrors);
+            }
+            return false;
+        }
+
+
+        /// <summary>
         /// lists the installed updates (still experimental)
         /// </summary>
         /// <returns>returns a list of installed updates</returns>
@@ -144,27 +182,37 @@ namespace telemetry_update_removal
             int count = updateSearcher.GetTotalHistoryCount();
             IUpdateHistoryEntryCollection foundUpdates = updateSearcher.QueryHistory(0, count);
 
-            List<UpdateOpInfo> result = new List<UpdateOpInfo>();
+            HashSet<UpdateOpInfo> set = new HashSet<UpdateOpInfo>();
             for (int i = 0; i < count; ++i)
             {
                 var upd = foundUpdates[i];
-                if (upd.Operation == UpdateOperation.uoInstallation && upd.ResultCode == OperationResultCode.orcSucceeded)
-                {
-                    UpdateOpInfo ud = new UpdateOpInfo();
-                    ud.title = upd.Title;
-                    ud.ID = upd.UpdateIdentity.UpdateID;
-                    ud.date = upd.Date;
-                    ud.operation = upd.Operation;
-                    ud.result = upd.ResultCode;
-                    result.Add(ud);
-                } //if
+
+                UpdateOpInfo ud = new UpdateOpInfo();
+                ud.title = upd.Title;
+                ud.ID = upd.UpdateIdentity.UpdateID;
+                ud.date = upd.Date;
+                ud.operation = upd.Operation;
+                ud.result = upd.ResultCode;
+
+                //Check whether we have to add or remove the update.
+                if (isInstallSuccess(upd))
+                    set.Add(ud);
+                else if (isUninstallSuccess(upd))
+                    set.Remove(ud);
                 upd = null;
+                ud = null;
             } //for
 
             foundUpdates = null;
             updateSearcher = null;
             session = null;
 
+            List<UpdateOpInfo> result = new List<UpdateOpInfo>();
+            foreach (var item in set)
+            {
+                result.Add(item);
+            }
+            set = null;
             return result;
         }
     } //class
