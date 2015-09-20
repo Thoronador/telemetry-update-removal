@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "telemetry-update-removal", "telemetry-update-removal.csproj", "{BBB2A226-A41A-4415-A777-EF6B73D46DAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "telemetry-update-removal-tests", "..\telemetry-update-removal-tests\telemetry-update-removal-tests.csproj", "{62327255-9C9D-4662-A02C-AD2AF40CB592}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{BBB2A226-A41A-4415-A777-EF6B73D46DAC}.Debug|x86.Build.0 = Debug|x86
 		{BBB2A226-A41A-4415-A777-EF6B73D46DAC}.Release|x86.ActiveCfg = Release|x86
 		{BBB2A226-A41A-4415-A777-EF6B73D46DAC}.Release|x86.Build.0 = Release|x86
+		{62327255-9C9D-4662-A02C-AD2AF40CB592}.Debug|x86.ActiveCfg = Debug|x86
+		{62327255-9C9D-4662-A02C-AD2AF40CB592}.Debug|x86.Build.0 = Debug|x86
+		{62327255-9C9D-4662-A02C-AD2AF40CB592}.Release|x86.ActiveCfg = Release|x86
+		{62327255-9C9D-4662-A02C-AD2AF40CB592}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
