@@ -72,7 +72,7 @@ namespace telemetry_update_removal_tests
         /// expected string values
         /// </summary>
         [Test]
-        public void TestFault()
+        public void Test_UpdateOperationToString()
         {
             Assert.AreEqual("Installation",
                 telemetry_update_removal.Updates.UpdateOperationToString(
