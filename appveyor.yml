@@ -13,7 +13,7 @@ version: 0.1.{build}-{branch}
 
 branches:
   except:
-    - gh-pages
+  - gh-pages
 
 # Do not build on tags (GitHub only)
 skip_tags: true
@@ -32,9 +32,9 @@ os: Windows Server 2012
 #---------------------------------#
 
 platform:
-  - x86
-  - x64
-  - Any CPU
+- x86
+- x64
+- Any CPU
 
 build:
   # enable MSBuild parallel builds
@@ -43,3 +43,8 @@ build:
   project: telemetry-update-removal\telemetry-update-removal.sln
   # MSBuild verbosity level
   verbosity: normal
+
+test:
+  categories:
+    except:
+    - NotForAppVeyor
