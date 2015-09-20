@@ -12,7 +12,7 @@ namespace telemetry_update_removal_tests
         /// <summary>
         /// checks whether Updates.listInstalledUpdates() lists some updates
         /// </summary>
-        [Test]
+        [Test, Category("NotForAppVeyor")]
         public void Test_listInstalledUpdates()
         {
             List<telemetry_update_removal.Updates.UpdateOpInfo> list
@@ -27,7 +27,7 @@ namespace telemetry_update_removal_tests
         /// <summary>
         /// checks whether Updates.listUpdateHistory() list some updates
         /// </summary>
-        [Test]
+        [Test, Category("NotForAppVeyor")]
         public void Test_listUpdateHistory()
         {
             List<telemetry_update_removal.Updates.UpdateOpInfo> list
