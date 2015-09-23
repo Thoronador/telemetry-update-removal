@@ -161,7 +161,7 @@ namespace telemetry_update_removal
                     KBs += ", " + kb;
                 } //foreach (inner)
                 if (KBs.StartsWith(", "))
-                    KBs.Remove(0, 2);
+                    KBs = KBs.Remove(0, 2);
                 if (String.IsNullOrWhiteSpace(KBs))
                     KBs = "none";
                 //Prepare string that contains all bulletin IDs.
@@ -171,7 +171,7 @@ namespace telemetry_update_removal
                     bulletins += ", " + secBulletin;
                 } //foreach (inner)
                 if (bulletins.StartsWith(", "))
-                    bulletins.Remove(0, 2);
+                    bulletins = bulletins.Remove(0, 2);
                 if (String.IsNullOrWhiteSpace(bulletins))
                     bulletins = "none";
                 //Add new row to data grid view.
