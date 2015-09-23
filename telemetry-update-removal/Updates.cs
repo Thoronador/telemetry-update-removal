@@ -211,7 +211,7 @@ namespace telemetry_update_removal
             //Do not go online to search for updates. We want to be fast(er).
             updateSearcher.Online = false;
 
-            var searchResult = updateSearcher.Search("IsHidden=1 AND BrowseOnly=1");
+            var searchResult = updateSearcher.Search("IsHidden=1");
             int count = searchResult.Updates.Count;
             List<UpdateInfo> result = new List<UpdateInfo>();
             for (int i = 0; i < count; ++i)
