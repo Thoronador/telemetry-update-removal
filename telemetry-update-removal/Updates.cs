@@ -198,5 +198,56 @@ namespace telemetry_update_removal
             set = null;
             return result;
         }
+
+
+        /// <summary>
+        /// lists updates that are hidden on the local machine
+        /// </summary>
+        /// <returns>Returns a list of hidden updates, if any.</returns>
+        public static List<UpdateInfo> listHiddenUpdates()
+        {
+            UpdateSession session = new UpdateSession();
+            IUpdateSearcher updateSearcher = session.CreateUpdateSearcher();
+            //Do not go online to search for updates. We want to be fast(er).
+            updateSearcher.Online = false;
+
+            var searchResult = updateSearcher.Search("IsHidden=1 AND BrowseOnly=1");
+            int count = searchResult.Updates.Count;
+            List<UpdateInfo> result = new List<UpdateInfo>();
+            for (int i = 0; i < count; ++i)
+            {
+                UpdateInfo info = new UpdateInfo();
+
+                info.ID = searchResult.Updates[i].Identity.UpdateID;
+                info.title = searchResult.Updates[i].Title;
+                info.minDownloadSize = searchResult.Updates[i].MinDownloadSize;
+                info.maxDownloadSize = searchResult.Updates[i].MaxDownloadSize;
+                info.uninstallable = searchResult.Updates[i].IsUninstallable;
+                info.securityBulletins.Clear();
+                if (searchResult.Updates[i].SecurityBulletinIDs != null)
+                {
+                    foreach (var item in searchResult.Updates[i].SecurityBulletinIDs)
+                    {
+                        info.securityBulletins.Add(item.ToString());
+                    } //foreach
+                } //if
+                info.KBArticleIDs.Clear();
+
+                if (null != searchResult.Updates[i].KBArticleIDs)
+                {
+                    foreach (var item in searchResult.Updates[i].KBArticleIDs)
+                    {
+                        info.KBArticleIDs.Add(item.ToString());
+                    } //foreach
+                } //if
+
+                result.Add(info);
+            } //for
+
+            searchResult = null;
+            updateSearcher = null;
+            session = null;
+            return result;
+        }
     } //class
 } //namespace
