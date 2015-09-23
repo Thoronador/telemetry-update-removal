@@ -28,6 +28,24 @@ namespace telemetry_update_removal_tests
     public class TestsUpdates
     {
         /// <summary>
+        /// checks whether Updates.listHiddenUpdates() works and does not throw
+        /// an exception
+        /// </summary>
+        [Test, Category("NotForAppVeyor")]
+        public void Test_listUpdateHistory()
+        {
+            List<telemetry_update_removal.UpdateInfo> list
+                = telemetry_update_removal.Updates.listHiddenUpdates();
+            //list should not be null
+            Assert.IsNotNull(list);
+            /* We do not know, whether there are hidden updates on the test
+             * system, so we cannot really check for non-emptiness of the
+             * list. */
+            //Assert.IsNotEmpty(list, "Update history is empty!");
+        }
+
+
+        /// <summary>
         /// checks whether Updates.listInstalledUpdates() lists some updates
         /// </summary>
         [Test, Category("NotForAppVeyor")]
@@ -55,7 +73,7 @@ namespace telemetry_update_removal_tests
             //list should contain some elements
             Assert.IsNotEmpty(list, "Update history is empty!");
         }
-        
+
 
         /// <summary>
         /// checks whether Updates.OperationResultCodeToString() returns the
