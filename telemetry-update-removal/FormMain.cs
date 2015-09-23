@@ -78,6 +78,7 @@ namespace telemetry_update_removal
         {
             btnListInstalled.Enabled = false;
             btnListCompleteHistory.Enabled = false;
+            btnListHiddenUpdates.Enabled = false;
         }
 
 
@@ -91,6 +92,7 @@ namespace telemetry_update_removal
         {
             btnListInstalled.Enabled = true;
             btnListCompleteHistory.Enabled = true;
+            btnListHiddenUpdates.Enabled = true;
         }
 
 
@@ -141,6 +143,50 @@ namespace telemetry_update_removal
         {
             btnClearFilter.Enabled = ("" != tbFilterByTitle.Text);
             filterUpdatesByTitle(tbFilterByTitle.Text);
+        }
+
+        private void btnListHiddenUpdates_Click(object sender, EventArgs e)
+        {
+            btnListHiddenUpdates.BackColor = System.Drawing.SystemColors.Control;
+            disableListActionButtons();
+            btnListHiddenUpdates.BackColor = System.Drawing.Color.Yellow;
+            var hiddenUpdates = Updates.listHiddenUpdates();
+            dgvHiddenUpdates.Rows.Clear();
+            foreach (var item in hiddenUpdates)
+            {
+                //Prepare string that contains all KB numbers.
+                string KBs = "";
+                foreach (var kb in item.KBArticleIDs)
+                {
+                    KBs += ", " + kb;
+                } //foreach (inner)
+                if (KBs.StartsWith(", "))
+                    KBs.Remove(0, 2);
+                if (String.IsNullOrWhiteSpace(KBs))
+                    KBs = "none";
+                //Prepare string that contains all bulletin IDs.
+                string bulletins = "";
+                foreach (var secBulletin in item.securityBulletins)
+                {
+                    bulletins += ", " + secBulletin;
+                } //foreach (inner)
+                if (bulletins.StartsWith(", "))
+                    bulletins.Remove(0, 2);
+                if (String.IsNullOrWhiteSpace(bulletins))
+                    bulletins = "none";
+                //Add new row to data grid view.
+                dgvHiddenUpdates.Rows.Add(new string[] {item.title, item.ID,
+                    KBs, bulletins });
+            } //foreach
+            if (hiddenUpdates.Count == 0)
+            {
+                //Show a row that indicates that there are no hidden updates.
+                dgvHiddenUpdates.Rows.Add(new string[] {"None", "N/A",
+                    "N/A", "N/A" });
+            } //if
+            hiddenUpdates = null;
+            btnListHiddenUpdates.BackColor = System.Drawing.Color.LightGreen;
+            enableListActionButtons();
         }
     } //class
 } //namespace

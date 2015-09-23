@@ -57,13 +57,26 @@ namespace telemetry_update_removal
             this.lblFilterbyTitle = new System.Windows.Forms.Label();
             this.tbFilterByTitle = new System.Windows.Forms.TextBox();
             this.btnClearFilter = new System.Windows.Forms.Button();
+            this.dgvHiddenUpdates = new System.Windows.Forms.DataGridView();
+            this.colHiddenTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHiddenID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHiddenKB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHiddenBulletin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageInstalledHistory = new System.Windows.Forms.TabPage();
+            this.tabPageHiddenUpdates = new System.Windows.Forms.TabPage();
+            this.btnListHiddenUpdates = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHiddenUpdates)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPageInstalledHistory.SuspendLayout();
+            this.tabPageHiddenUpdates.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListInstalled
             // 
             this.btnListInstalled.AutoSize = true;
-            this.btnListInstalled.Location = new System.Drawing.Point(12, 12);
+            this.btnListInstalled.Location = new System.Drawing.Point(6, 6);
             this.btnListInstalled.Name = "btnListInstalled";
             this.btnListInstalled.Size = new System.Drawing.Size(179, 23);
             this.btnListInstalled.TabIndex = 0;
@@ -86,10 +99,10 @@ namespace telemetry_update_removal
             this.colStatus,
             this.colTitle,
             this.colID});
-            this.dgvUpdates.Location = new System.Drawing.Point(12, 67);
+            this.dgvUpdates.Location = new System.Drawing.Point(3, 61);
             this.dgvUpdates.Name = "dgvUpdates";
             this.dgvUpdates.RowHeadersVisible = false;
-            this.dgvUpdates.Size = new System.Drawing.Size(590, 354);
+            this.dgvUpdates.Size = new System.Drawing.Size(465, 341);
             this.dgvUpdates.TabIndex = 2;
             // 
             // colDate
@@ -124,7 +137,7 @@ namespace telemetry_update_removal
             // 
             // btnListCompleteHistory
             // 
-            this.btnListCompleteHistory.Location = new System.Drawing.Point(197, 12);
+            this.btnListCompleteHistory.Location = new System.Drawing.Point(191, 6);
             this.btnListCompleteHistory.Name = "btnListCompleteHistory";
             this.btnListCompleteHistory.Size = new System.Drawing.Size(185, 23);
             this.btnListCompleteHistory.TabIndex = 3;
@@ -135,7 +148,7 @@ namespace telemetry_update_removal
             // lblFilterbyTitle
             // 
             this.lblFilterbyTitle.AutoSize = true;
-            this.lblFilterbyTitle.Location = new System.Drawing.Point(12, 44);
+            this.lblFilterbyTitle.Location = new System.Drawing.Point(6, 38);
             this.lblFilterbyTitle.Name = "lblFilterbyTitle";
             this.lblFilterbyTitle.Size = new System.Drawing.Size(65, 13);
             this.lblFilterbyTitle.TabIndex = 4;
@@ -143,7 +156,7 @@ namespace telemetry_update_removal
             // 
             // tbFilterByTitle
             // 
-            this.tbFilterByTitle.Location = new System.Drawing.Point(91, 41);
+            this.tbFilterByTitle.Location = new System.Drawing.Point(85, 35);
             this.tbFilterByTitle.Name = "tbFilterByTitle";
             this.tbFilterByTitle.Size = new System.Drawing.Size(291, 20);
             this.tbFilterByTitle.TabIndex = 5;
@@ -152,7 +165,7 @@ namespace telemetry_update_removal
             // btnClearFilter
             // 
             this.btnClearFilter.Enabled = false;
-            this.btnClearFilter.Location = new System.Drawing.Point(388, 39);
+            this.btnClearFilter.Location = new System.Drawing.Point(382, 33);
             this.btnClearFilter.Name = "btnClearFilter";
             this.btnClearFilter.Size = new System.Drawing.Size(75, 23);
             this.btnClearFilter.TabIndex = 6;
@@ -160,23 +173,122 @@ namespace telemetry_update_removal
             this.btnClearFilter.UseVisualStyleBackColor = true;
             this.btnClearFilter.Click += new System.EventHandler(this.btnClearFilter_Click);
             // 
+            // dgvHiddenUpdates
+            // 
+            this.dgvHiddenUpdates.AllowUserToAddRows = false;
+            this.dgvHiddenUpdates.AllowUserToDeleteRows = false;
+            this.dgvHiddenUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvHiddenUpdates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvHiddenUpdates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHiddenUpdates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colHiddenTitle,
+            this.colHiddenID,
+            this.colHiddenKB,
+            this.colHiddenBulletin});
+            this.dgvHiddenUpdates.Location = new System.Drawing.Point(6, 35);
+            this.dgvHiddenUpdates.Name = "dgvHiddenUpdates";
+            this.dgvHiddenUpdates.ReadOnly = true;
+            this.dgvHiddenUpdates.RowHeadersVisible = false;
+            this.dgvHiddenUpdates.Size = new System.Drawing.Size(462, 367);
+            this.dgvHiddenUpdates.TabIndex = 7;
+            // 
+            // colHiddenTitle
+            // 
+            this.colHiddenTitle.HeaderText = "Title";
+            this.colHiddenTitle.Name = "colHiddenTitle";
+            this.colHiddenTitle.ReadOnly = true;
+            this.colHiddenTitle.Width = 52;
+            // 
+            // colHiddenID
+            // 
+            this.colHiddenID.HeaderText = "ID";
+            this.colHiddenID.Name = "colHiddenID";
+            this.colHiddenID.ReadOnly = true;
+            this.colHiddenID.Width = 43;
+            // 
+            // colHiddenKB
+            // 
+            this.colHiddenKB.HeaderText = "KB Article(s)";
+            this.colHiddenKB.Name = "colHiddenKB";
+            this.colHiddenKB.ReadOnly = true;
+            this.colHiddenKB.Width = 89;
+            // 
+            // colHiddenBulletin
+            // 
+            this.colHiddenBulletin.HeaderText = "Bulletin(s)";
+            this.colHiddenBulletin.Name = "colHiddenBulletin";
+            this.colHiddenBulletin.ReadOnly = true;
+            this.colHiddenBulletin.Width = 77;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPageInstalledHistory);
+            this.tabControl1.Controls.Add(this.tabPageHiddenUpdates);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(482, 434);
+            this.tabControl1.TabIndex = 8;
+            // 
+            // tabPageInstalledHistory
+            // 
+            this.tabPageInstalledHistory.Controls.Add(this.btnListInstalled);
+            this.tabPageInstalledHistory.Controls.Add(this.dgvUpdates);
+            this.tabPageInstalledHistory.Controls.Add(this.btnClearFilter);
+            this.tabPageInstalledHistory.Controls.Add(this.btnListCompleteHistory);
+            this.tabPageInstalledHistory.Controls.Add(this.tbFilterByTitle);
+            this.tabPageInstalledHistory.Controls.Add(this.lblFilterbyTitle);
+            this.tabPageInstalledHistory.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInstalledHistory.Name = "tabPageInstalledHistory";
+            this.tabPageInstalledHistory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageInstalledHistory.Size = new System.Drawing.Size(474, 408);
+            this.tabPageInstalledHistory.TabIndex = 0;
+            this.tabPageInstalledHistory.Text = "Installed / History";
+            this.tabPageInstalledHistory.UseVisualStyleBackColor = true;
+            // 
+            // tabPageHiddenUpdates
+            // 
+            this.tabPageHiddenUpdates.Controls.Add(this.btnListHiddenUpdates);
+            this.tabPageHiddenUpdates.Controls.Add(this.dgvHiddenUpdates);
+            this.tabPageHiddenUpdates.Location = new System.Drawing.Point(4, 22);
+            this.tabPageHiddenUpdates.Name = "tabPageHiddenUpdates";
+            this.tabPageHiddenUpdates.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageHiddenUpdates.Size = new System.Drawing.Size(474, 408);
+            this.tabPageHiddenUpdates.TabIndex = 1;
+            this.tabPageHiddenUpdates.Text = "Hidden updates";
+            this.tabPageHiddenUpdates.UseVisualStyleBackColor = true;
+            // 
+            // btnListHiddenUpdates
+            // 
+            this.btnListHiddenUpdates.Location = new System.Drawing.Point(6, 6);
+            this.btnListHiddenUpdates.Name = "btnListHiddenUpdates";
+            this.btnListHiddenUpdates.Size = new System.Drawing.Size(176, 23);
+            this.btnListHiddenUpdates.TabIndex = 8;
+            this.btnListHiddenUpdates.Text = "List hidden updates (SLOW!)";
+            this.btnListHiddenUpdates.UseVisualStyleBackColor = true;
+            this.btnListHiddenUpdates.Click += new System.EventHandler(this.btnListHiddenUpdates_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 433);
-            this.Controls.Add(this.btnClearFilter);
-            this.Controls.Add(this.tbFilterByTitle);
-            this.Controls.Add(this.lblFilterbyTitle);
-            this.Controls.Add(this.btnListCompleteHistory);
-            this.Controls.Add(this.dgvUpdates);
-            this.Controls.Add(this.btnListInstalled);
-            this.MinimumSize = new System.Drawing.Size(400, 150);
+            this.ClientSize = new System.Drawing.Size(506, 458);
+            this.Controls.Add(this.tabControl1);
+            this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "FormMain";
             this.Text = "Telemetry update removal";
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHiddenUpdates)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPageInstalledHistory.ResumeLayout(false);
+            this.tabPageInstalledHistory.PerformLayout();
+            this.tabPageHiddenUpdates.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -193,6 +305,15 @@ namespace telemetry_update_removal
         private System.Windows.Forms.Label lblFilterbyTitle;
         private System.Windows.Forms.TextBox tbFilterByTitle;
         private System.Windows.Forms.Button btnClearFilter;
+        private System.Windows.Forms.DataGridView dgvHiddenUpdates;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHiddenTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHiddenID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHiddenKB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHiddenBulletin;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageInstalledHistory;
+        private System.Windows.Forms.TabPage tabPageHiddenUpdates;
+        private System.Windows.Forms.Button btnListHiddenUpdates;
     }
 }
 
