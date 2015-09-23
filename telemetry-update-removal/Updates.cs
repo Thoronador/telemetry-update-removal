@@ -45,7 +45,7 @@ namespace telemetry_update_removal
             public string ID;
 
             /// <summary>
-            /// time of the (un-)installation
+            /// time of the (un-)installation; seems to be UTC and not local time
             /// </summary>
             public DateTime date;
 
@@ -140,6 +140,8 @@ namespace telemetry_update_removal
             for (int i = 0; i < count; ++i)
             {
                 UpdateOpInfo opInfo = new UpdateOpInfo();
+                /* Note: The Date value seems to be in UTC and not in local
+                 * time, because this value was off by a few hours. */
                 opInfo.date = history[i].Date;
                 opInfo.ID = history[i].UpdateIdentity.UpdateID;
                 opInfo.operation = history[i].Operation;
@@ -213,6 +215,8 @@ namespace telemetry_update_removal
                 UpdateOpInfo ud = new UpdateOpInfo();
                 ud.title = upd.Title;
                 ud.ID = upd.UpdateIdentity.UpdateID;
+                /* Note: The Date value seems to be in UTC and not in local
+                 * time, because this value was off by a few hours. */
                 ud.date = upd.Date;
                 ud.operation = upd.Operation;
                 ud.result = upd.ResultCode;
