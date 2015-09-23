@@ -26,6 +26,8 @@ namespace telemetry_update_removal
         public FormMain()
         {
             InitializeComponent();
+            //Show version in title bar.
+            this.Text += " v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private void btnListInstalled_Click(object sender, EventArgs e)
