@@ -15,7 +15,7 @@ namespace telemetry_update_removal_tests
         [Test, Category("NotForAppVeyor")]
         public void Test_listInstalledUpdates()
         {
-            List<telemetry_update_removal.Updates.UpdateOpInfo> list
+            List<telemetry_update_removal.UpdateOpInfo> list
                 = telemetry_update_removal.Updates.listInstalledUpdates();
             //list should not be null
             Assert.IsNotNull(list);
@@ -30,7 +30,7 @@ namespace telemetry_update_removal_tests
         [Test, Category("NotForAppVeyor")]
         public void Test_listUpdateHistory()
         {
-            List<telemetry_update_removal.Updates.UpdateOpInfo> list
+            List<telemetry_update_removal.UpdateOpInfo> list
                 = telemetry_update_removal.Updates.listUpdateHistory();
             //list should not be null
             Assert.IsNotNull(list);

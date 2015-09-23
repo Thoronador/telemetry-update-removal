@@ -29,7 +29,7 @@ namespace telemetry_update_removal
         /// <summary>
         /// internal cache that lists the currently installed Microsoft updates
         /// </summary>
-        private List<Updates.UpdateOpInfo> m_InstalledCache;
+        private List<UpdateOpInfo> m_InstalledCache;
 
         /// <summary>
         /// default constructor

@@ -30,50 +30,6 @@ namespace telemetry_update_removal
     public class Updates
     {
         /// <summary>
-        /// aux. structure to hold information about an update operation
-        /// </summary>
-        public class UpdateOpInfo
-        {
-            /// <summary>
-            /// title of the update
-            /// </summary>
-            public string title;
-
-            /// <summary>
-            /// internal ID / GUID of the update
-            /// </summary>
-            public string ID;
-
-            /// <summary>
-            /// time of the (un-)installation; seems to be UTC and not local time
-            /// </summary>
-            public DateTime date;
-
-            /// <summary>
-            /// the type of update operation - install or uninstall
-            /// </summary>
-            public UpdateOperation operation;
-
-            /// <summary>
-            /// result code of the update
-            /// </summary>
-            public OperationResultCode result;
-
-            /// <summary>
-            /// default constructor: initializes all members
-            /// </summary>
-            public UpdateOpInfo()
-            {
-                title = "";
-                ID = "";
-                date = DateTime.MinValue;
-                operation = UpdateOperation.uoUninstallation;
-                result = OperationResultCode.orcNotStarted;
-            }
-        } //struct
-
-
-        /// <summary>
         /// returns a human-readable string to describe the passed
         /// UpdateOperation value (e.g. "Installation" or "Uninstallation",
         /// depending on what the value indicates)
