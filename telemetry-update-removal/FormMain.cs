@@ -17,17 +17,36 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace telemetry_update_removal
 {
     public partial class FormMain : Form
     {
+        /// <summary>
+        /// list of problematic updates
+        /// </summary>
+        private List<KBInfo> m_dataKB;
+
+        /// <summary>
+        /// constant that indicates the column index for the "Installed"
+        /// column of the telemetry updates data grid view
+        /// </summary>
+        private const int idxInstalled = 2;
+
+        /// <summary>
+        /// constant that indicates the column index for the "Blocked"
+        /// column of the telemetry updates data grid view
+        /// </summary>
+        private const int idxBlocked = 3;
+
         public FormMain()
         {
             InitializeComponent();
             //Show version in title bar.
             this.Text += " v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            m_dataKB = new List<KBInfo>();
         }
 
         private void btnListInstalled_Click(object sender, EventArgs e)
@@ -81,6 +100,7 @@ namespace telemetry_update_removal
             btnListInstalled.Enabled = false;
             btnListCompleteHistory.Enabled = false;
             btnListHiddenUpdates.Enabled = false;
+            btnListTelemetryUpdates.Enabled = false;
         }
 
 
@@ -95,6 +115,7 @@ namespace telemetry_update_removal
             btnListInstalled.Enabled = true;
             btnListCompleteHistory.Enabled = true;
             btnListHiddenUpdates.Enabled = true;
+            btnListTelemetryUpdates.Enabled = true;
         }
 
 
@@ -188,6 +209,46 @@ namespace telemetry_update_removal
             } //if
             hiddenUpdates = null;
             btnListHiddenUpdates.BackColor = System.Drawing.Color.LightGreen;
+            enableListActionButtons();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            if (!KBInfoReader.readFromFile("updatelist.xml", ref m_dataKB))
+            {
+                MessageBox.Show("The list of problematic KB updates could not be loaded!",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            dgvTelemetryUpdates.Rows.Clear();
+            foreach (KBInfo item in m_dataKB)
+            {
+                int rowIndex = dgvTelemetryUpdates.Rows.Add(new string[] {
+                    item.KB.ToString(), item.title.ToString(), "?", "?"});
+                dgvTelemetryUpdates.Rows[rowIndex].Cells[idxInstalled].Style.BackColor = System.Drawing.Color.Yellow;
+                dgvTelemetryUpdates.Rows[rowIndex].Cells[idxBlocked].Style.BackColor = System.Drawing.Color.Yellow;
+            } //foreach
+            int i = 0;
+            for (i = 0; i < dgvTelemetryUpdates.Columns.Count; i++)
+            {
+                dgvTelemetryUpdates.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            } //for
+        }
+
+        private void btnListTelemetryUpdates_Click(object sender, EventArgs e)
+        {
+            disableListActionButtons();
+            InstalledUpdates instUpdates = new InstalledUpdates();
+            
+            int i = 0;
+            for (i = 0; i < m_dataKB.Count; ++i)
+            {
+                if (instUpdates.isInstalledByKBNumber(m_dataKB[i].KB))
+                    dgvTelemetryUpdates.Rows[i].Cells[idxInstalled].Style.BackColor = System.Drawing.Color.LightSalmon;
+                else
+                    dgvTelemetryUpdates.Rows[i].Cells[idxInstalled].Style.BackColor = System.Drawing.Color.LightGreen;
+            } //for
+            instUpdates = null;
             enableListActionButtons();
         }
     } //class
