@@ -22,7 +22,7 @@ using System.Collections.Generic;
 namespace telemetry_update_removal
 {
     /// <summary>
-    /// aux. structure to hold information about an update operation
+    /// aux. structure to hold information about an update
     /// </summary>
     public class UpdateInfo
     {
