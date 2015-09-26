@@ -32,7 +32,7 @@ namespace telemetry_update_removal_tests
         /// an exception
         /// </summary>
         [Test, Category("NotForAppVeyor")]
-        public void Test_listUpdateHistory()
+        public void Test_listHiddenUpdates()
         {
             List<telemetry_update_removal.UpdateInfo> list
                 = telemetry_update_removal.Updates.listHiddenUpdates();
