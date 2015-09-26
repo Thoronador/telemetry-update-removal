@@ -64,6 +64,7 @@ namespace telemetry_update_removal
             this.colHiddenBulletin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTelemetryUpdates = new System.Windows.Forms.TabPage();
+            this.progressBarTelemetryUpdates = new System.Windows.Forms.ProgressBar();
             this.lblTelemetryUpdates = new System.Windows.Forms.Label();
             this.dgvTelemetryUpdates = new System.Windows.Forms.DataGridView();
             this.colTelemetryKB = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,7 +75,6 @@ namespace telemetry_update_removal
             this.tabPageInstalledHistory = new System.Windows.Forms.TabPage();
             this.tabPageHiddenUpdates = new System.Windows.Forms.TabPage();
             this.btnListHiddenUpdates = new System.Windows.Forms.Button();
-            this.progressBarTelemetryUpdates = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHiddenUpdates)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -244,7 +244,7 @@ namespace telemetry_update_removal
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(482, 434);
+            this.tabControl1.Size = new System.Drawing.Size(574, 434);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPageTelemetryUpdates
@@ -255,10 +255,22 @@ namespace telemetry_update_removal
             this.tabPageTelemetryUpdates.Controls.Add(this.btnListTelemetryUpdates);
             this.tabPageTelemetryUpdates.Location = new System.Drawing.Point(4, 22);
             this.tabPageTelemetryUpdates.Name = "tabPageTelemetryUpdates";
-            this.tabPageTelemetryUpdates.Size = new System.Drawing.Size(474, 408);
+            this.tabPageTelemetryUpdates.Size = new System.Drawing.Size(566, 408);
             this.tabPageTelemetryUpdates.TabIndex = 2;
             this.tabPageTelemetryUpdates.Text = "Telemetry updates";
             this.tabPageTelemetryUpdates.UseVisualStyleBackColor = true;
+            // 
+            // progressBarTelemetryUpdates
+            // 
+            this.progressBarTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarTelemetryUpdates.Location = new System.Drawing.Point(183, 382);
+            this.progressBarTelemetryUpdates.Name = "progressBarTelemetryUpdates";
+            this.progressBarTelemetryUpdates.Size = new System.Drawing.Size(380, 23);
+            this.progressBarTelemetryUpdates.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBarTelemetryUpdates.TabIndex = 3;
+            this.progressBarTelemetryUpdates.Value = 30;
+            this.progressBarTelemetryUpdates.Visible = false;
             // 
             // lblTelemetryUpdates
             // 
@@ -287,7 +299,7 @@ namespace telemetry_update_removal
             this.dgvTelemetryUpdates.Name = "dgvTelemetryUpdates";
             this.dgvTelemetryUpdates.ReadOnly = true;
             this.dgvTelemetryUpdates.RowHeadersVisible = false;
-            this.dgvTelemetryUpdates.Size = new System.Drawing.Size(468, 354);
+            this.dgvTelemetryUpdates.Size = new System.Drawing.Size(560, 354);
             this.dgvTelemetryUpdates.TabIndex = 1;
             // 
             // colTelemetryKB
@@ -370,23 +382,11 @@ namespace telemetry_update_removal
             this.btnListHiddenUpdates.UseVisualStyleBackColor = true;
             this.btnListHiddenUpdates.Click += new System.EventHandler(this.btnListHiddenUpdates_Click);
             // 
-            // progressBarTelemetryUpdates
-            // 
-            this.progressBarTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarTelemetryUpdates.Location = new System.Drawing.Point(183, 382);
-            this.progressBarTelemetryUpdates.Name = "progressBarTelemetryUpdates";
-            this.progressBarTelemetryUpdates.Size = new System.Drawing.Size(288, 23);
-            this.progressBarTelemetryUpdates.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBarTelemetryUpdates.TabIndex = 3;
-            this.progressBarTelemetryUpdates.Value = 30;
-            this.progressBarTelemetryUpdates.Visible = false;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 458);
+            this.ClientSize = new System.Drawing.Size(598, 458);
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "FormMain";

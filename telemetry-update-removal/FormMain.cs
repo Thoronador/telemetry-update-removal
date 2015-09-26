@@ -228,7 +228,9 @@ namespace telemetry_update_removal
                 int rowIndex = dgvTelemetryUpdates.Rows.Add(new string[] {
                     item.KB.ToString(), item.title.ToString(), "?", "?"});
                 dgvTelemetryUpdates.Rows[rowIndex].Cells[idxInstalled].Style.BackColor = System.Drawing.Color.Yellow;
+                dgvTelemetryUpdates.Rows[rowIndex].Cells[idxInstalled].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvTelemetryUpdates.Rows[rowIndex].Cells[idxBlocked].Style.BackColor = System.Drawing.Color.Yellow;
+                dgvTelemetryUpdates.Rows[rowIndex].Cells[idxBlocked].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             } //foreach
             int i = 0;
             for (i = 0; i < dgvTelemetryUpdates.Columns.Count; i++)
