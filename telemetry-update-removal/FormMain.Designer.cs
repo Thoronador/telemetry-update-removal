@@ -113,7 +113,7 @@ namespace telemetry_update_removal
             this.dgvUpdates.Location = new System.Drawing.Point(3, 61);
             this.dgvUpdates.Name = "dgvUpdates";
             this.dgvUpdates.RowHeadersVisible = false;
-            this.dgvUpdates.Size = new System.Drawing.Size(465, 341);
+            this.dgvUpdates.Size = new System.Drawing.Size(557, 341);
             this.dgvUpdates.TabIndex = 2;
             // 
             // colDate
@@ -202,7 +202,7 @@ namespace telemetry_update_removal
             this.dgvHiddenUpdates.Name = "dgvHiddenUpdates";
             this.dgvHiddenUpdates.ReadOnly = true;
             this.dgvHiddenUpdates.RowHeadersVisible = false;
-            this.dgvHiddenUpdates.Size = new System.Drawing.Size(462, 367);
+            this.dgvHiddenUpdates.Size = new System.Drawing.Size(554, 367);
             this.dgvHiddenUpdates.TabIndex = 7;
             // 
             // colHiddenTitle
@@ -355,7 +355,7 @@ namespace telemetry_update_removal
             this.tabPageInstalledHistory.Location = new System.Drawing.Point(4, 22);
             this.tabPageInstalledHistory.Name = "tabPageInstalledHistory";
             this.tabPageInstalledHistory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInstalledHistory.Size = new System.Drawing.Size(474, 408);
+            this.tabPageInstalledHistory.Size = new System.Drawing.Size(566, 408);
             this.tabPageInstalledHistory.TabIndex = 0;
             this.tabPageInstalledHistory.Text = "Installed / History";
             this.tabPageInstalledHistory.UseVisualStyleBackColor = true;
@@ -367,7 +367,7 @@ namespace telemetry_update_removal
             this.tabPageHiddenUpdates.Location = new System.Drawing.Point(4, 22);
             this.tabPageHiddenUpdates.Name = "tabPageHiddenUpdates";
             this.tabPageHiddenUpdates.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHiddenUpdates.Size = new System.Drawing.Size(474, 408);
+            this.tabPageHiddenUpdates.Size = new System.Drawing.Size(566, 408);
             this.tabPageHiddenUpdates.TabIndex = 1;
             this.tabPageHiddenUpdates.Text = "Hidden updates";
             this.tabPageHiddenUpdates.UseVisualStyleBackColor = true;

@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using WUApiLib;
 
 namespace telemetry_update_removal
@@ -248,6 +249,30 @@ namespace telemetry_update_removal
             updateSearcher = null;
             session = null;
             return result;
+        }
+
+
+        /// <summary>
+        /// tries to uninstall an update (identified by KB number)
+        /// </summary>
+        /// <param name="KB">Knowlege Base Article ID of the update that shall be removed</param>
+        /// <returns>Returns true, if the update was removed successfully.
+        /// Returns false, if the update could not be installed.</returns>
+        public static bool uninstallByKB(uint KB)
+        {
+            //General pattern: wusa.exe /kb:12345678 /uninstall /quiet /norestart
+            ProcessStartInfo startInfo = new ProcessStartInfo("wusa.exe");
+            startInfo.Arguments = "/kb:" + KB.ToString() + " /uninstall /quiet /norestart";
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            Process proc = new Process();
+            proc.StartInfo = startInfo;
+            //Start the process.
+            if (!proc.Start())
+                return false;
+            //Wait until process exits - might take a long time!
+            proc.WaitForExit();
+            //Success is usually indicated by ExitCode zero.
+            return (proc.ExitCode == 0);
         }
     } //class
 } //namespace
