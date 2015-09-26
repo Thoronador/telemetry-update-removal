@@ -64,23 +64,24 @@ namespace telemetry_update_removal
             this.colHiddenBulletin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTelemetryUpdates = new System.Windows.Forms.TabPage();
-            this.tabPageInstalledHistory = new System.Windows.Forms.TabPage();
-            this.tabPageHiddenUpdates = new System.Windows.Forms.TabPage();
-            this.btnListHiddenUpdates = new System.Windows.Forms.Button();
-            this.btnListTelemetryUpdates = new System.Windows.Forms.Button();
-            this.dgvTelemetryUpdates = new System.Windows.Forms.DataGridView();
             this.lblTelemetryUpdates = new System.Windows.Forms.Label();
+            this.dgvTelemetryUpdates = new System.Windows.Forms.DataGridView();
             this.colTelemetryKB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTelemetryTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTelemetryInstalled = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTelemetryBlocked = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnListTelemetryUpdates = new System.Windows.Forms.Button();
+            this.tabPageInstalledHistory = new System.Windows.Forms.TabPage();
+            this.tabPageHiddenUpdates = new System.Windows.Forms.TabPage();
+            this.btnListHiddenUpdates = new System.Windows.Forms.Button();
+            this.progressBarTelemetryUpdates = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHiddenUpdates)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageTelemetryUpdates.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTelemetryUpdates)).BeginInit();
             this.tabPageInstalledHistory.SuspendLayout();
             this.tabPageHiddenUpdates.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTelemetryUpdates)).BeginInit();
             this.SuspendLayout();
             // 
             // btnListInstalled
@@ -248,6 +249,7 @@ namespace telemetry_update_removal
             // 
             // tabPageTelemetryUpdates
             // 
+            this.tabPageTelemetryUpdates.Controls.Add(this.progressBarTelemetryUpdates);
             this.tabPageTelemetryUpdates.Controls.Add(this.lblTelemetryUpdates);
             this.tabPageTelemetryUpdates.Controls.Add(this.dgvTelemetryUpdates);
             this.tabPageTelemetryUpdates.Controls.Add(this.btnListTelemetryUpdates);
@@ -257,6 +259,78 @@ namespace telemetry_update_removal
             this.tabPageTelemetryUpdates.TabIndex = 2;
             this.tabPageTelemetryUpdates.Text = "Telemetry updates";
             this.tabPageTelemetryUpdates.UseVisualStyleBackColor = true;
+            // 
+            // lblTelemetryUpdates
+            // 
+            this.lblTelemetryUpdates.AutoSize = true;
+            this.lblTelemetryUpdates.Location = new System.Drawing.Point(6, 6);
+            this.lblTelemetryUpdates.Name = "lblTelemetryUpdates";
+            this.lblTelemetryUpdates.Size = new System.Drawing.Size(97, 13);
+            this.lblTelemetryUpdates.TabIndex = 2;
+            this.lblTelemetryUpdates.Text = "Telemetry updates:";
+            // 
+            // dgvTelemetryUpdates
+            // 
+            this.dgvTelemetryUpdates.AllowUserToAddRows = false;
+            this.dgvTelemetryUpdates.AllowUserToDeleteRows = false;
+            this.dgvTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTelemetryUpdates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvTelemetryUpdates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTelemetryUpdates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTelemetryKB,
+            this.colTelemetryTitle,
+            this.colTelemetryInstalled,
+            this.colTelemetryBlocked});
+            this.dgvTelemetryUpdates.Location = new System.Drawing.Point(3, 22);
+            this.dgvTelemetryUpdates.Name = "dgvTelemetryUpdates";
+            this.dgvTelemetryUpdates.ReadOnly = true;
+            this.dgvTelemetryUpdates.RowHeadersVisible = false;
+            this.dgvTelemetryUpdates.Size = new System.Drawing.Size(468, 354);
+            this.dgvTelemetryUpdates.TabIndex = 1;
+            // 
+            // colTelemetryKB
+            // 
+            this.colTelemetryKB.HeaderText = "KB";
+            this.colTelemetryKB.Name = "colTelemetryKB";
+            this.colTelemetryKB.ReadOnly = true;
+            this.colTelemetryKB.Width = 46;
+            // 
+            // colTelemetryTitle
+            // 
+            this.colTelemetryTitle.HeaderText = "Title";
+            this.colTelemetryTitle.Name = "colTelemetryTitle";
+            this.colTelemetryTitle.ReadOnly = true;
+            this.colTelemetryTitle.Width = 52;
+            // 
+            // colTelemetryInstalled
+            // 
+            this.colTelemetryInstalled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colTelemetryInstalled.HeaderText = "Installed";
+            this.colTelemetryInstalled.MinimumWidth = 25;
+            this.colTelemetryInstalled.Name = "colTelemetryInstalled";
+            this.colTelemetryInstalled.ReadOnly = true;
+            this.colTelemetryInstalled.Width = 71;
+            // 
+            // colTelemetryBlocked
+            // 
+            this.colTelemetryBlocked.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.colTelemetryBlocked.HeaderText = "Blocked";
+            this.colTelemetryBlocked.Name = "colTelemetryBlocked";
+            this.colTelemetryBlocked.ReadOnly = true;
+            this.colTelemetryBlocked.Width = 71;
+            // 
+            // btnListTelemetryUpdates
+            // 
+            this.btnListTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnListTelemetryUpdates.Location = new System.Drawing.Point(3, 382);
+            this.btnListTelemetryUpdates.Name = "btnListTelemetryUpdates";
+            this.btnListTelemetryUpdates.Size = new System.Drawing.Size(174, 23);
+            this.btnListTelemetryUpdates.TabIndex = 0;
+            this.btnListTelemetryUpdates.Text = "List installed telemetry updates";
+            this.btnListTelemetryUpdates.UseVisualStyleBackColor = true;
+            this.btnListTelemetryUpdates.Click += new System.EventHandler(this.btnListTelemetryUpdates_Click);
             // 
             // tabPageInstalledHistory
             // 
@@ -296,73 +370,17 @@ namespace telemetry_update_removal
             this.btnListHiddenUpdates.UseVisualStyleBackColor = true;
             this.btnListHiddenUpdates.Click += new System.EventHandler(this.btnListHiddenUpdates_Click);
             // 
-            // btnListTelemetryUpdates
+            // progressBarTelemetryUpdates
             // 
-            this.btnListTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnListTelemetryUpdates.Location = new System.Drawing.Point(3, 382);
-            this.btnListTelemetryUpdates.Name = "btnListTelemetryUpdates";
-            this.btnListTelemetryUpdates.Size = new System.Drawing.Size(174, 23);
-            this.btnListTelemetryUpdates.TabIndex = 0;
-            this.btnListTelemetryUpdates.Text = "List installed telemetry updates";
-            this.btnListTelemetryUpdates.UseVisualStyleBackColor = true;
-            this.btnListTelemetryUpdates.Click += new System.EventHandler(this.btnListTelemetryUpdates_Click);
-            // 
-            // dgvTelemetryUpdates
-            // 
-            this.dgvTelemetryUpdates.AllowUserToAddRows = false;
-            this.dgvTelemetryUpdates.AllowUserToDeleteRows = false;
-            this.dgvTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.progressBarTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvTelemetryUpdates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvTelemetryUpdates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTelemetryUpdates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colTelemetryKB,
-            this.colTelemetryTitle,
-            this.colTelemetryInstalled,
-            this.colTelemetryBlocked});
-            this.dgvTelemetryUpdates.Location = new System.Drawing.Point(3, 22);
-            this.dgvTelemetryUpdates.Name = "dgvTelemetryUpdates";
-            this.dgvTelemetryUpdates.ReadOnly = true;
-            this.dgvTelemetryUpdates.RowHeadersVisible = false;
-            this.dgvTelemetryUpdates.Size = new System.Drawing.Size(468, 354);
-            this.dgvTelemetryUpdates.TabIndex = 1;
-            // 
-            // lblTelemetryUpdates
-            // 
-            this.lblTelemetryUpdates.AutoSize = true;
-            this.lblTelemetryUpdates.Location = new System.Drawing.Point(6, 6);
-            this.lblTelemetryUpdates.Name = "lblTelemetryUpdates";
-            this.lblTelemetryUpdates.Size = new System.Drawing.Size(97, 13);
-            this.lblTelemetryUpdates.TabIndex = 2;
-            this.lblTelemetryUpdates.Text = "Telemetry updates:";
-            // 
-            // colTelemetryKB
-            // 
-            this.colTelemetryKB.HeaderText = "KB";
-            this.colTelemetryKB.Name = "colTelemetryKB";
-            this.colTelemetryKB.Width = 46;
-            // 
-            // colTelemetryTitle
-            // 
-            this.colTelemetryTitle.HeaderText = "Title";
-            this.colTelemetryTitle.Name = "colTelemetryTitle";
-            this.colTelemetryTitle.Width = 52;
-            // 
-            // colTelemetryInstalled
-            // 
-            this.colTelemetryInstalled.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colTelemetryInstalled.HeaderText = "Installed";
-            this.colTelemetryInstalled.MinimumWidth = 25;
-            this.colTelemetryInstalled.Name = "colTelemetryInstalled";
-            this.colTelemetryInstalled.Width = 71;
-            // 
-            // colTelemetryBlocked
-            // 
-            this.colTelemetryBlocked.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.colTelemetryBlocked.HeaderText = "Blocked";
-            this.colTelemetryBlocked.Name = "colTelemetryBlocked";
-            this.colTelemetryBlocked.Width = 71;
+            this.progressBarTelemetryUpdates.Location = new System.Drawing.Point(183, 382);
+            this.progressBarTelemetryUpdates.Name = "progressBarTelemetryUpdates";
+            this.progressBarTelemetryUpdates.Size = new System.Drawing.Size(288, 23);
+            this.progressBarTelemetryUpdates.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBarTelemetryUpdates.TabIndex = 3;
+            this.progressBarTelemetryUpdates.Value = 30;
+            this.progressBarTelemetryUpdates.Visible = false;
             // 
             // FormMain
             // 
@@ -379,10 +397,10 @@ namespace telemetry_update_removal
             this.tabControl1.ResumeLayout(false);
             this.tabPageTelemetryUpdates.ResumeLayout(false);
             this.tabPageTelemetryUpdates.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTelemetryUpdates)).EndInit();
             this.tabPageInstalledHistory.ResumeLayout(false);
             this.tabPageInstalledHistory.PerformLayout();
             this.tabPageHiddenUpdates.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTelemetryUpdates)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,6 +435,7 @@ namespace telemetry_update_removal
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelemetryTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelemetryInstalled;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelemetryBlocked;
+        private System.Windows.Forms.ProgressBar progressBarTelemetryUpdates;
     }
 }
 

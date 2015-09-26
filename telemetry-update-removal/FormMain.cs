@@ -41,6 +41,8 @@ namespace telemetry_update_removal
         /// </summary>
         private const int idxBlocked = 3;
 
+        private List<UpdateInfo> m_syncList;
+
         public FormMain()
         {
             InitializeComponent();
@@ -239,7 +241,10 @@ namespace telemetry_update_removal
         {
             disableListActionButtons();
             InstalledUpdates instUpdates = new InstalledUpdates();
-            
+
+            progressBarTelemetryUpdates.Style = ProgressBarStyle.Marquee;
+            progressBarTelemetryUpdates.Visible = true;
+
             int i = 0;
             for (i = 0; i < m_dataKB.Count; ++i)
             {
@@ -260,7 +265,27 @@ namespace telemetry_update_removal
             Application.DoEvents();
 
             //Search for hidden updates - this takes a while.
-            List<UpdateInfo> hiddenStuff = Updates.listHiddenUpdates();
+            m_syncList = null;
+
+            System.Threading.Thread worker = new System.Threading.Thread(threadedListProc);
+            worker.Start();
+            while (!worker.Join(400))
+            {
+                //Process application events.
+                Application.DoEvents();
+            } //while
+            try
+            {
+                worker.Interrupt();
+            }
+            catch (Exception)
+            {
+                // Do nothing.
+            }
+
+            if (null == m_syncList)
+                m_syncList = new List<UpdateInfo>();
+            List<UpdateInfo> hiddenStuff = m_syncList;
             for (i = 0; i < m_dataKB.Count; ++i)
             {
                 bool found = false;
@@ -283,7 +308,20 @@ namespace telemetry_update_removal
                     dgvTelemetryUpdates.Rows[i].Cells[idxBlocked].Style.BackColor = System.Drawing.Color.LightSalmon;
                 }
             } //for
+
+            progressBarTelemetryUpdates.Style = ProgressBarStyle.Blocks;
+            progressBarTelemetryUpdates.Visible = false;
+
             enableListActionButtons();
+        }
+
+
+        /// <summary>
+        /// procedure that searches for hidden updates and writes them to m_syncList
+        /// </summary>
+        private void threadedListProc()
+        {
+            m_syncList = Updates.listHiddenUpdates();
         }
     } //class
 } //namespace
