@@ -244,11 +244,45 @@ namespace telemetry_update_removal
             for (i = 0; i < m_dataKB.Count; ++i)
             {
                 if (instUpdates.isInstalledByKBNumber(m_dataKB[i].KB))
+                {
+                    dgvTelemetryUpdates.Rows[i].Cells[idxInstalled].Value = "YES";
                     dgvTelemetryUpdates.Rows[i].Cells[idxInstalled].Style.BackColor = System.Drawing.Color.LightSalmon;
+                }
                 else
+                {
+                    dgvTelemetryUpdates.Rows[i].Cells[idxInstalled].Value = "no";
                     dgvTelemetryUpdates.Rows[i].Cells[idxInstalled].Style.BackColor = System.Drawing.Color.LightGreen;
+                }
             } //for
             instUpdates = null;
+
+            //Allow application to redraw the data grid view with current data.
+            Application.DoEvents();
+
+            //Search for hidden updates - this takes a while.
+            List<UpdateInfo> hiddenStuff = Updates.listHiddenUpdates();
+            for (i = 0; i < m_dataKB.Count; ++i)
+            {
+                bool found = false;
+                foreach (UpdateInfo update in hiddenStuff)
+                {
+                    if (update.KBArticleIDs.Contains(m_dataKB[i].KB.ToString()))
+                    {
+                        found = true;
+                        break; //break out of inner loop (foreach)
+                    } //if
+                } //foreach
+                if (found)
+                {
+                    dgvTelemetryUpdates.Rows[i].Cells[idxBlocked].Value = "yes";
+                    dgvTelemetryUpdates.Rows[i].Cells[idxBlocked].Style.BackColor = System.Drawing.Color.LightGreen;
+                }
+                else
+                {
+                    dgvTelemetryUpdates.Rows[i].Cells[idxBlocked].Value = "NO";
+                    dgvTelemetryUpdates.Rows[i].Cells[idxBlocked].Style.BackColor = System.Drawing.Color.LightSalmon;
+                }
+            } //for
             enableListActionButtons();
         }
     } //class
