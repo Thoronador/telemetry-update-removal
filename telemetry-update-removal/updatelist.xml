@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is part of the Windows 7/8 telemetry update removal tool.
+    Copyright (C) 2015  Thoronador
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<updates>
+  <kb id="2952664">
+    <short>Compatibility update for upgrading Windows 7</short>
+	<summary>This update helps Microsoft make improvements to the current operating
+      system in order to ease the upgrade experience to the latest version of
+      Windows.</summary>
+  </kb>
+  <kb id="2976978">
+    <short>Compatibility update for Windows 8.1 and Windows 8</short>
+	<summary>This update performs diagnostics on the Windows systems that participate
+      in the Windows Customer Experience Improvement Program. These diagnostics
+      help determine whether compatibility issues may be encountered when the
+      latest Windows operating system is installed.</summary>
+  </kb>
+  <kb id="2977759">
+    <short>Compatibility update for Windows 7 RTM</short>
+	<summary>This update performs diagnostics on the Windows systems that participate
+      in the Windows Customer Experience Improvement Program. These diagnostics
+      help determine whether compatibility issues may be encountered when the
+      latest Windows operating system is installed.</summary>
+  </kb>
+  <kb id="2990214">
+    <short>Update that enables you to upgrade from Windows 7 to a later version of Windows</short>
+	<summary>... an update that enables you to upgrade your computer from Windows 7
+      Service Pack 1 (SP1) to a later version of Windows.</summary>
+  </kb>
+  <kb id="3021917">
+    <short>Update to Windows 7 SP1 for performance improvements</short>
+	<summary>This update performs diagnostics in Windows 7 Service Pack 1 (SP1) in
+      order to determine whether performance issues may be encountered when
+      the latest Windows operating system is installed. Telemetry is sent back
+      to Microsoft for those computers that participate in the Windows Customer
+      Experience Improvement Program (CEIP). This update will help Microsoft
+      and its partners deliver better system performance for customers who are
+      seeking to install the latest Windows operating system.</summary>
+  </kb>
+  <kb id="3022345">
+    <short>Update for customer experience and diagnostic telemetry</short>
+	<summary>This update introduces the Diagnostics and Telemetry tracking service
+      to in-market devices. By applying this service, you can add benefits
+      from the latest version of Windows to systems that have not yet been
+      upgraded.</summary>
+  </kb>
+  <kb id="3035583">
+    <short>Update installs Get Windows 10 app in Windows 8.1 and Windows 7 SP1</short>
+	<summary>&quot;This update installs the Get Windows 10 app, which helps users
+       understand their Windows 10 upgrade options and device readiness.&quot;
+	   
+	   In other words: This update installs the &quot;Get Windows 10&quot; app, which urges
+  the users to upgrade to Windows 10 as soon as possible.
+    </summary>
+  </kb>
+  <kb id="3044374">
+    <short>Update that enables you to upgrade from Windows 8.1 to Windows 10</short>
+	<summary>[...] an update that enables you to upgrade your computer from
+      Windows 8.1 to a Windows 10.</summary>
+  </kb>
+  <kb id="3065987">
+    <short>Windows Update Client for Windows 7 and Windows Server 2008 R2: July 2015</short>
+	<summary>[...] an update that contains some improvements to Windows Update
+      Client in Windows 7 Service Pack 1 (SP1) or Windows Server 2008 R2 SP1.</summary>
+  </kb>
+  <kb id="3068708">
+    <short>Update for customer experience and diagnostic telemetry</short>
+	<summary>This update introduces the Diagnostics and Telemetry tracking service
+      to existing devices.</summary>
+  </kb>
+  <kb id="3075249">
+    <short>Update that adds telemetry points to consent.exe in Windows 8.1 and Windows 7</short>
+	<summary>[...] an update that adds telemetry points to consent.exe in
+      Windows 8.1, Windows RT 8.1, Windows Server 2012 R2, Windows 7 Service
+      Pack 1 (SP1), and Windows Server 2008 R2 SP1. [...] This update adds
+      telemetry points to the User Account Control (UAC) feature to collect
+      information on elevations that come from low integrity levels.</summary>
+  </kb>
+  <kb id="3075851">
+    <short>Windows Update Client for Windows 7 and Windows Server 2008 R2: August 2015</short>
+	<summary>[...] an update that contains some improvements to Windows Update Client
+     in Windows 7 Service Pack 1 (SP1) and Windows Server 2008 R2 SP1. This
+     update also resolves an issue in which certain Windows Update operations
+     fail when you install Windows Update Client for Windows 7 and Windows
+     Server 2008 R2: July 2015 (3065987) on Windows 7 Embedded editions.</summary>
+  </kb>
+  <kb id="3080149">
+    <short>Update for customer experience and diagnostic telemetry</short>
+	<summary>This package updates the Diagnostics and Telemetry tracking service to
+      existing devices. This service provides benefits from the latest version
+      of Windows to systems that have not yet upgraded.</summary>
+  </kb>
+</updates>
