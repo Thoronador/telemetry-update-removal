@@ -26,6 +26,9 @@ skip_tags: true
 # Operating system (build VM template)
 os: Windows Server 2012
 
+install:
+  - ps: & ci\download_and_install_innosetup.ps1
+
 
 #---------------------------------#
 #       build configuration       #
@@ -48,3 +51,11 @@ test:
   categories:
     except:
     - NotForAppVeyor
+
+#---------------------------------#
+#        global handlers          #
+#---------------------------------#
+
+# on successful build
+on_success:
+  - cmd: ci\build_installer.cmd
