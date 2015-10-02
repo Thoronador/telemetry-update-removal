@@ -17,7 +17,7 @@
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 $url = "http://files.jrsoftware.org/is/5/isetup-5.5.6-unicode.exe"
-$output = ".\isetup-unicode.exe"
+$output = "isetup-unicode.exe"
 $start = Get-Date
 
 # $webcli = New-Object System.Net.WebClient
@@ -27,10 +27,36 @@ $start = Get-Date
 Write-Output "Time required for download: $((Get-Date).Subtract($start).Seconds) second(s)"
 
 # Call executable to install InnoSetup 5, silent/unattended installation.
-& $output /VERYSILENT
+& isetup-unicode.exe /VERYSILENT
+$inno_success = $?
+if ($inno_success)
+{
+  Write-Output "Installation of InnoSetup 5 succeeded."
+  ## Get installation location from the registry.
+  #$key = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Inno Setup 5_is1'
+  #$value = Get-ItemProperty -Path $key -Name "InstallLocation"
+  #$installLoc = $value.InstallLocation
+  #Write-Output "Install location is $installLoc"
+}
+else
+{
+  Write-Output "Installation of InnoSetup 5 FAILED!"
+  Write-Output $error
+}
 
 # Delete the downloaded installer, because we do not want to clutter the file
 # system.
 If (Test-Path $output){
 	Remove-Item $output
+}
+
+if ($inno_success)
+{
+  # alright
+  Exit 0
+}
+else
+{
+  # installation failed
+  Exit 1
 }
