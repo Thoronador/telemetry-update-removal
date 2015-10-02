@@ -119,7 +119,7 @@ namespace telemetry_update_removal
         /// <param name="KB">knowledge base number</param>
         /// <returns>Returns true, if the title contains the KB number.
         /// Returns false otherwise.</returns>
-        public bool titleMatchesKB(string title, uint KB)
+        public static bool titleMatchesKB(string title, uint KB)
         {
             if (string.IsNullOrWhiteSpace(title))
                 return false;
