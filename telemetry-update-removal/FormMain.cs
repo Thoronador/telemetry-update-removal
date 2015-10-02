@@ -155,7 +155,10 @@ namespace telemetry_update_removal
             string lcFilter = filter.ToLower();
             for (i = 0; i < dgvUpdates.Rows.Count; ++i)
             {
-                dgvUpdates.Rows[i].Visible = dgvUpdates.Rows[i].Cells[idxTitle].Value.ToString().ToLower().Contains(lcFilter);
+                if (null != dgvUpdates.Rows[i].Cells[idxTitle].Value)
+                    dgvUpdates.Rows[i].Visible = dgvUpdates.Rows[i].Cells[idxTitle].Value.ToString().ToLower().Contains(lcFilter);
+                else
+                    dgvUpdates.Rows[i].Visible = false;
             } //for
         }
 
