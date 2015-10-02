@@ -83,15 +83,32 @@ namespace telemetry_update_removal
             //Make sure we have an update cache for the search.
             generateCache();
 
-            string search = "KB" + KB.ToString();
-            int searchLen = search.Length;
-
             foreach (var item in m_InstalledCache)
             {
                 if (titleMatchesKB(item.title, KB))
                     return true;
             } //foreach
             return false;
+        }
+
+
+        /// <summary>
+        /// finds the ID / GUID of an installed update
+        /// </summary>
+        /// <param name="KB">the knowledge base number of the update</param>
+        /// <returns>Returns a string containing the update's ID.
+        /// Returns null, if the update was not found/is not installed.</returns>
+        public string getInstalledIDByKB(uint KB)
+        {
+            //Make sure we have an update cache for the search.
+            generateCache();
+
+            foreach (var item in m_InstalledCache)
+            {
+                if (titleMatchesKB(item.title, KB))
+                    return item.ID;
+            } //foreach
+            return null;
         }
 
 
