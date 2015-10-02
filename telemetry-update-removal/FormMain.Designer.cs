@@ -112,6 +112,7 @@ namespace telemetry_update_removal
             this.colID});
             this.dgvUpdates.Location = new System.Drawing.Point(3, 61);
             this.dgvUpdates.Name = "dgvUpdates";
+            this.dgvUpdates.ReadOnly = true;
             this.dgvUpdates.RowHeadersVisible = false;
             this.dgvUpdates.Size = new System.Drawing.Size(557, 341);
             this.dgvUpdates.TabIndex = 2;
@@ -120,30 +121,35 @@ namespace telemetry_update_removal
             // 
             this.colDate.HeaderText = "Date";
             this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
             this.colDate.Width = 55;
             // 
             // colOperation
             // 
             this.colOperation.HeaderText = "Operation";
             this.colOperation.Name = "colOperation";
+            this.colOperation.ReadOnly = true;
             this.colOperation.Width = 78;
             // 
             // colStatus
             // 
             this.colStatus.HeaderText = "Status";
             this.colStatus.Name = "colStatus";
+            this.colStatus.ReadOnly = true;
             this.colStatus.Width = 62;
             // 
             // colTitle
             // 
             this.colTitle.HeaderText = "Title";
             this.colTitle.Name = "colTitle";
+            this.colTitle.ReadOnly = true;
             this.colTitle.Width = 52;
             // 
             // colID
             // 
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
             this.colID.Width = 43;
             // 
             // btnListCompleteHistory
