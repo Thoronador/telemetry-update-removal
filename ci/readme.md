@@ -20,3 +20,9 @@ will need InnoSetup 5 (see <http://www.jrsoftware.org/isinfo.php>). Also, the
 application's binary executable already has to be build - either by building
 it directly from Visual Studio or by building it via msbuild.exe from the
 command line.
+
+**download_and_install_innosetup.ps1** is a PowerShell script that can be used
+to download and install InnoSetup 5.5.6. The later part (installation) needs
+administrative privileges, so make sure that this script is run by an
+administrator. Otherwise, an UAC prompt will pop up and ask you for the
+credentials of an administrator account.
