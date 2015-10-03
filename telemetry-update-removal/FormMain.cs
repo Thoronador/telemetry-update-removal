@@ -250,6 +250,8 @@ namespace telemetry_update_removal
             progressBarTelemetryUpdates.Style = ProgressBarStyle.Marquee;
             progressBarTelemetryUpdates.Visible = true;
 
+            bool enableUninstallButton = false;
+
             int i = 0;
             for (i = 0; i < m_dataKB.Count; ++i)
             {
@@ -257,6 +259,7 @@ namespace telemetry_update_removal
                 {
                     dgvTelemetryUpdates.Rows[i].Cells[idxInstalled].Value = "YES";
                     dgvTelemetryUpdates.Rows[i].Cells[idxInstalled].Style.BackColor = System.Drawing.Color.LightSalmon;
+                    enableUninstallButton = true;
                 }
                 else
                 {
@@ -317,6 +320,8 @@ namespace telemetry_update_removal
             progressBarTelemetryUpdates.Style = ProgressBarStyle.Blocks;
             progressBarTelemetryUpdates.Visible = false;
 
+            btnUninstall.Enabled = enableUninstallButton;
+
             enableListActionButtons();
         }
 
@@ -327,6 +332,12 @@ namespace telemetry_update_removal
         private void threadedListProc()
         {
             m_syncList = Updates.listHiddenUpdates();
+        }
+
+        private void btnUninstall_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented yet", "Feature still missing",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     } //class
 } //namespace
