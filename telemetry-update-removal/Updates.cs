@@ -253,6 +253,37 @@ namespace telemetry_update_removal
 
 
         /// <summary>
+        /// tries to uninstall the given updates
+        /// </summary>
+        /// <param name="theUpdates">collection of updates, must not be empty</param>
+        /// <param name="needsReboot">Reference parameter that will be set to
+        /// true, if a reboot is required after the operation. Will be set to
+        /// false, if no reboot is required. Value is undefined, if the function
+        /// fails, i.e. returns false.</param>
+        /// <returns></returns>
+        public static bool uninstallUpdates(UpdateCollection theUpdates, ref bool needsReboot)
+        {
+            //No empty stuff!
+            if (null == theUpdates)
+                return false;
+            if (theUpdates.Count <= 0)
+                return false;
+
+            UpdateSession session = new UpdateSession();
+            IUpdateInstaller updInstaller = session.CreateUpdateInstaller();
+            updInstaller.Updates = theUpdates;
+            IInstallationResult res = updInstaller.Uninstall();
+            needsReboot = res.RebootRequired;
+            bool success = (res.ResultCode == OperationResultCode.orcSucceeded
+                || res.ResultCode == OperationResultCode.orcSucceededWithErrors);
+            res = null;
+            updInstaller = null;
+            session = null;
+            return success;
+        }
+
+
+        /// <summary>
         /// tries to uninstall an update (identified by KB number) by using
         /// wusa.exe
         /// </summary>
