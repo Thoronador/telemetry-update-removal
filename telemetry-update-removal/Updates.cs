@@ -211,6 +211,8 @@ namespace telemetry_update_removal
             IUpdateSearcher updateSearcher = session.CreateUpdateSearcher();
             //Do not go online to search for updates. We want to be fast(er).
             updateSearcher.Online = false;
+            //Also include older, superseded updates.
+            updateSearcher.IncludePotentiallySupersededUpdates = true;
 
             var searchResult = updateSearcher.Search("IsHidden=1");
             int count = searchResult.Updates.Count;

@@ -336,8 +336,28 @@ namespace telemetry_update_removal
 
         private void btnUninstall_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet", "Feature still missing",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnUninstall.Enabled = false;
+
+            HashSet<uint> KBNumbers = new HashSet<uint>();
+            foreach (var item in m_dataKB)
+            {
+                KBNumbers.Add(item.KB);
+            } //foreach
+            Uninstaller removeStuff = new Uninstaller();
+            if (!removeStuff.uninstallAndHide(KBNumbers))
+            {
+                MessageBox.Show("At least one telemetry-related update could not be removed properly!",
+                    "Not all telemetry updates were removed.",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("All present telemetry-related updates were removed properly!",
+                    "All telemetry updates were removed.",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            btnUninstall.Enabled = true;
         }
     } //class
 } //namespace
