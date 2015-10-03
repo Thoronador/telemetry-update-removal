@@ -253,12 +253,13 @@ namespace telemetry_update_removal
 
 
         /// <summary>
-        /// tries to uninstall an update (identified by KB number)
+        /// tries to uninstall an update (identified by KB number) by using
+        /// wusa.exe
         /// </summary>
         /// <param name="KB">Knowlege Base Article ID of the update that shall be removed</param>
         /// <returns>Returns true, if the update was removed successfully.
         /// Returns false, if the update could not be installed.</returns>
-        public static bool uninstallByKB(uint KB)
+        public static bool uninstallByKBwithWUSA(uint KB)
         {
             //General pattern: wusa.exe /kb:12345678 /uninstall /quiet /norestart
             ProcessStartInfo startInfo = new ProcessStartInfo("wusa.exe");
