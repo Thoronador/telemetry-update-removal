@@ -337,6 +337,7 @@ namespace telemetry_update_removal
         private void btnUninstall_Click(object sender, EventArgs e)
         {
             btnUninstall.Enabled = false;
+            disableListActionButtons();
 
             HashSet<uint> KBNumbers = new HashSet<uint>();
             foreach (var item in m_dataKB)
@@ -358,6 +359,7 @@ namespace telemetry_update_removal
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+            enableListActionButtons();
             btnUninstall.Enabled = true;
         }
     } //class
