@@ -80,7 +80,7 @@ namespace telemetry_update_removal
             {
                 //Process application events.
                 System.Windows.Forms.Application.DoEvents();
-                System.Threading.Thread.Sleep(0);
+                System.Threading.Thread.Sleep(200);
             } //while
 
             var searchResult = updateSearcher.EndSearch(searchJob);

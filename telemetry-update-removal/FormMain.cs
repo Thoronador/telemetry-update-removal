@@ -178,6 +178,11 @@ namespace telemetry_update_removal
             btnListHiddenUpdates.BackColor = System.Drawing.SystemColors.Control;
             disableListActionButtons();
             btnListHiddenUpdates.BackColor = System.Drawing.Color.Yellow;
+
+            toolStripProgressBarMain.Style = ProgressBarStyle.Marquee;
+            toolStripProgressBarMain.Visible = true;
+            tsslMain.Text = "Searching for hidden/blocked updates...";
+
             var hiddenUpdates = Updates.listHiddenUpdates();
             dgvHiddenUpdates.Rows.Clear();
             foreach (var item in hiddenUpdates)
@@ -214,6 +219,11 @@ namespace telemetry_update_removal
             } //if
             hiddenUpdates = null;
             btnListHiddenUpdates.BackColor = System.Drawing.Color.LightGreen;
+
+            toolStripProgressBarMain.Style = ProgressBarStyle.Blocks;
+            toolStripProgressBarMain.Visible = false;
+            tsslMain.Text = "Status: none";
+
             enableListActionButtons();
         }
 
@@ -342,6 +352,10 @@ namespace telemetry_update_removal
             btnUninstall.Enabled = false;
             disableListActionButtons();
 
+            toolStripProgressBarMain.Style = ProgressBarStyle.Marquee;
+            toolStripProgressBarMain.Visible = true;
+            tsslMain.Text = "Removing telemetry updates...";
+
             HashSet<uint> KBNumbers = new HashSet<uint>();
             foreach (var item in m_dataKB)
             {
@@ -361,6 +375,10 @@ namespace telemetry_update_removal
                     "All telemetry updates were removed.",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+            tsslMain.Text = "Status: None";
+            toolStripProgressBarMain.Style = ProgressBarStyle.Blocks;
+            toolStripProgressBarMain.Visible = false;
 
             enableListActionButtons();
             btnUninstall.Enabled = true;
