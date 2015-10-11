@@ -347,6 +347,14 @@ namespace telemetry_update_removal
             m_syncList = Updates.listHiddenUpdates();
         }
 
+        private void changeStatusBarText(string msg)
+        {
+            if (!String.IsNullOrWhiteSpace(msg))
+                statusStripMain.Text = msg;
+            else
+                statusStripMain.Text = "";
+        }
+
         private void btnUninstall_Click(object sender, EventArgs e)
         {
             btnUninstall.Enabled = false;
@@ -362,7 +370,7 @@ namespace telemetry_update_removal
                 KBNumbers.Add(item.KB);
             } //foreach
             Uninstaller removeStuff = new Uninstaller();
-            if (!removeStuff.uninstallAndHide(KBNumbers))
+            if (!removeStuff.uninstallAndHide(KBNumbers, changeStatusBarText))
             {
                 MessageBox.Show("At least one telemetry-related update could not be removed properly!",
                     "Not all telemetry updates were removed.",

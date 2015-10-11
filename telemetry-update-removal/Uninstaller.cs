@@ -56,7 +56,7 @@ namespace telemetry_update_removal
         /// <param name="numbersKB">knowledge base (KB) article numbers</param>
         /// <returns>Returns true, if uinstallation was successful.
         /// Returns false, if uninstallation failed.</returns>
-        public bool uninstallAndHide(HashSet<uint> numbersKB)
+        public bool uninstallAndHide(HashSet<uint> numbersKB, dlgtChangeStatusBarMessage ChangeStatusBarMessage)
         {
             if (null == numbersKB)
                 return false;
@@ -74,6 +74,8 @@ namespace telemetry_update_removal
 
             UpdateSearchCompleteCallback callback = new UpdateSearchCompleteCallback();
 
+            ChangeStatusBarMessage("Searching through installed updates... (This may take several minutes.)");
+
             var searchJob = updateSearcher.BeginSearch("IsInstalled=1 or IsInstalled=0", callback, null);
 
             while (!searchJob.IsCompleted)
@@ -86,6 +88,10 @@ namespace telemetry_update_removal
             var searchResult = updateSearcher.EndSearch(searchJob);
             int count = searchResult.Updates.Count;
 
+            ChangeStatusBarMessage("Hiding/blocking telemetry updates...");
+            System.Windows.Forms.Application.DoEvents();
+            System.Threading.Thread.Sleep(200);
+
             List<IUpdate> toBeRemoved = new List<IUpdate>();
 
             int i = 0;
@@ -96,7 +102,19 @@ namespace telemetry_update_removal
                     /* Hide update from future installations. This way we avoid
                      * that the update might get installed again by an
                      * automatic update. */
-                    searchResult.Updates[i].IsHidden = true;
+                    try
+                    {
+                        /* Hide update. This may throw an exception, if the
+                         * user has hidden the update manually while the search
+                         * was in progress. */
+                        searchResult.Updates[i].IsHidden = true;
+                    }
+                    catch (Exception)
+                    {
+                        /* Ignore exception, there's not much we can
+                         * (or need to) do about it anyway. */
+                    } //try-catch
+
                     // If update is installed, but can be uninstalled, add it to the list.
                     if (searchResult.Updates[i].IsInstalled && searchResult.Updates[i].IsUninstallable)
                     {
@@ -128,6 +146,11 @@ namespace telemetry_update_removal
                 return true;
             }
 
+            ChangeStatusBarMessage("Removing " + toBeRemoved.Count.ToString()
+                + " installed telemetry update(s)...");
+            System.Windows.Forms.Application.DoEvents();
+            System.Threading.Thread.Sleep(200);
+
             UpdateCollection collection = new UpdateCollection();
             foreach (var item in toBeRemoved)
             {
@@ -137,6 +160,7 @@ namespace telemetry_update_removal
             bool reboot = false;
             bool success = Updates.uninstallUpdates(collection, ref reboot);
             m_Busy = false;
+            ChangeStatusBarMessage("Removal of telemetry update(s) is finished.");
             return success;
         }
 
