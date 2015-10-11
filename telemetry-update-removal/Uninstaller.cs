@@ -72,7 +72,9 @@ namespace telemetry_update_removal
             //Do not go online to search for updates. We want to be fast(er).
             updateSearcher.Online = false;
 
-            var searchJob = updateSearcher.BeginSearch("IsInstalled=1 and IsInstalled=0", null, null);
+            UpdateSearchCompleteCallback callback = new UpdateSearchCompleteCallback();
+
+            var searchJob = updateSearcher.BeginSearch("IsInstalled=1 or IsInstalled=0", callback, null);
 
             while (!searchJob.IsCompleted)
             {

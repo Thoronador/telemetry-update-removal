@@ -9,7 +9,7 @@
 #---------------------------------#
 
 # version format - you can use {branch} name in version format too
-version: 0.3.3.{build}-{branch}
+version: 0.3.4.{build}-{branch}
 
 branches:
   except:

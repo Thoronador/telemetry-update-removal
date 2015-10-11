@@ -57,6 +57,7 @@
     <Compile Include="UpdateInfo.cs" />
     <Compile Include="UpdateOpInfo.cs" />
     <Compile Include="Updates.cs" />
+    <Compile Include="UpdateSearchCompleteCallback.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

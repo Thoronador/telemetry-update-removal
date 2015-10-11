@@ -352,7 +352,8 @@ namespace telemetry_update_removal
             }
             else
             {
-                MessageBox.Show("All present telemetry-related updates were removed properly!",
+                MessageBox.Show("All present telemetry-related updates were removed properly!"
+                    + System.Environment.NewLine + "You should restart your machine now.",
                     "All telemetry updates were removed.",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
