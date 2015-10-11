@@ -64,7 +64,7 @@ namespace telemetry_update_removal
             this.colHiddenBulletin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageTelemetryUpdates = new System.Windows.Forms.TabPage();
-            this.progressBarTelemetryUpdates = new System.Windows.Forms.ProgressBar();
+            this.btnUninstall = new System.Windows.Forms.Button();
             this.lblTelemetryUpdates = new System.Windows.Forms.Label();
             this.dgvTelemetryUpdates = new System.Windows.Forms.DataGridView();
             this.colTelemetryKB = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +75,9 @@ namespace telemetry_update_removal
             this.tabPageInstalledHistory = new System.Windows.Forms.TabPage();
             this.tabPageHiddenUpdates = new System.Windows.Forms.TabPage();
             this.btnListHiddenUpdates = new System.Windows.Forms.Button();
-            this.btnUninstall = new System.Windows.Forms.Button();
+            this.statusStripMain = new System.Windows.Forms.StatusStrip();
+            this.tsslMain = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBarMain = new System.Windows.Forms.ToolStripProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHiddenUpdates)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -83,6 +85,7 @@ namespace telemetry_update_removal
             ((System.ComponentModel.ISupportInitialize)(this.dgvTelemetryUpdates)).BeginInit();
             this.tabPageInstalledHistory.SuspendLayout();
             this.tabPageHiddenUpdates.SuspendLayout();
+            this.statusStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListInstalled
@@ -257,7 +260,6 @@ namespace telemetry_update_removal
             // tabPageTelemetryUpdates
             // 
             this.tabPageTelemetryUpdates.Controls.Add(this.btnUninstall);
-            this.tabPageTelemetryUpdates.Controls.Add(this.progressBarTelemetryUpdates);
             this.tabPageTelemetryUpdates.Controls.Add(this.lblTelemetryUpdates);
             this.tabPageTelemetryUpdates.Controls.Add(this.dgvTelemetryUpdates);
             this.tabPageTelemetryUpdates.Controls.Add(this.btnListTelemetryUpdates);
@@ -268,17 +270,17 @@ namespace telemetry_update_removal
             this.tabPageTelemetryUpdates.Text = "Telemetry updates";
             this.tabPageTelemetryUpdates.UseVisualStyleBackColor = true;
             // 
-            // progressBarTelemetryUpdates
+            // btnUninstall
             // 
-            this.progressBarTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarTelemetryUpdates.Location = new System.Drawing.Point(183, 382);
-            this.progressBarTelemetryUpdates.Name = "progressBarTelemetryUpdates";
-            this.progressBarTelemetryUpdates.Size = new System.Drawing.Size(292, 23);
-            this.progressBarTelemetryUpdates.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBarTelemetryUpdates.TabIndex = 3;
-            this.progressBarTelemetryUpdates.Value = 30;
-            this.progressBarTelemetryUpdates.Visible = false;
+            this.btnUninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUninstall.Enabled = false;
+            this.btnUninstall.Location = new System.Drawing.Point(481, 382);
+            this.btnUninstall.Name = "btnUninstall";
+            this.btnUninstall.Size = new System.Drawing.Size(82, 23);
+            this.btnUninstall.TabIndex = 4;
+            this.btnUninstall.Text = "Uninstall";
+            this.btnUninstall.UseVisualStyleBackColor = true;
+            this.btnUninstall.Click += new System.EventHandler(this.btnUninstall_Click);
             // 
             // lblTelemetryUpdates
             // 
@@ -390,23 +392,33 @@ namespace telemetry_update_removal
             this.btnListHiddenUpdates.UseVisualStyleBackColor = true;
             this.btnListHiddenUpdates.Click += new System.EventHandler(this.btnListHiddenUpdates_Click);
             // 
-            // btnUninstall
+            // statusStripMain
             // 
-            this.btnUninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUninstall.Enabled = false;
-            this.btnUninstall.Location = new System.Drawing.Point(481, 382);
-            this.btnUninstall.Name = "btnUninstall";
-            this.btnUninstall.Size = new System.Drawing.Size(82, 23);
-            this.btnUninstall.TabIndex = 4;
-            this.btnUninstall.Text = "Uninstall";
-            this.btnUninstall.UseVisualStyleBackColor = true;
-            this.btnUninstall.Click += new System.EventHandler(this.btnUninstall_Click);
+            this.statusStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslMain,
+            this.toolStripProgressBarMain});
+            this.statusStripMain.Location = new System.Drawing.Point(0, 458);
+            this.statusStripMain.Name = "statusStripMain";
+            this.statusStripMain.Size = new System.Drawing.Size(598, 22);
+            this.statusStripMain.TabIndex = 9;
+            // 
+            // tsslMain
+            // 
+            this.tsslMain.Name = "tsslMain";
+            this.tsslMain.Size = new System.Drawing.Size(70, 17);
+            this.tsslMain.Text = "Status: None";
+            // 
+            // toolStripProgressBarMain
+            // 
+            this.toolStripProgressBarMain.Name = "toolStripProgressBarMain";
+            this.toolStripProgressBarMain.Size = new System.Drawing.Size(200, 16);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(598, 458);
+            this.ClientSize = new System.Drawing.Size(598, 480);
+            this.Controls.Add(this.statusStripMain);
             this.Controls.Add(this.tabControl1);
             this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "FormMain";
@@ -421,7 +433,10 @@ namespace telemetry_update_removal
             this.tabPageInstalledHistory.ResumeLayout(false);
             this.tabPageInstalledHistory.PerformLayout();
             this.tabPageHiddenUpdates.ResumeLayout(false);
+            this.statusStripMain.ResumeLayout(false);
+            this.statusStripMain.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -455,8 +470,10 @@ namespace telemetry_update_removal
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelemetryTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelemetryInstalled;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelemetryBlocked;
-        private System.Windows.Forms.ProgressBar progressBarTelemetryUpdates;
         private System.Windows.Forms.Button btnUninstall;
+        private System.Windows.Forms.StatusStrip statusStripMain;
+        private System.Windows.Forms.ToolStripStatusLabel tsslMain;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBarMain;
     }
 }
 

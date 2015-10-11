@@ -247,8 +247,9 @@ namespace telemetry_update_removal
             disableListActionButtons();
             InstalledUpdates instUpdates = new InstalledUpdates();
 
-            progressBarTelemetryUpdates.Style = ProgressBarStyle.Marquee;
-            progressBarTelemetryUpdates.Visible = true;
+            toolStripProgressBarMain.Style = ProgressBarStyle.Marquee;
+            toolStripProgressBarMain.Visible = true;
+            tsslMain.Text = "Searching for installed telemetry updates...";
 
             bool enableUninstallButton = false;
 
@@ -273,6 +274,7 @@ namespace telemetry_update_removal
             Application.DoEvents();
 
             //Search for hidden updates - this takes a while.
+            tsslMain.Text = "Searching for blocked telemetry updates...";
             m_syncList = null;
 
             System.Threading.Thread worker = new System.Threading.Thread(threadedListProc);
@@ -317,8 +319,9 @@ namespace telemetry_update_removal
                 }
             } //for
 
-            progressBarTelemetryUpdates.Style = ProgressBarStyle.Blocks;
-            progressBarTelemetryUpdates.Visible = false;
+            tsslMain.Text = "Status: None";
+            toolStripProgressBarMain.Style = ProgressBarStyle.Blocks;
+            toolStripProgressBarMain.Visible = false;
 
             btnUninstall.Enabled = enableUninstallButton;
 
