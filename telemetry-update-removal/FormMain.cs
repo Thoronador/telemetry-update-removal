@@ -30,6 +30,12 @@ namespace telemetry_update_removal
         private List<KBInfo> m_dataKB;
 
         /// <summary>
+        /// constant that indicates the column index for the "Title"
+        /// column of the telemetry updates data grid view
+        /// </summary>
+        private const int idxTitle = 1;
+
+        /// <summary>
         /// constant that indicates the column index for the "Installed"
         /// column of the telemetry updates data grid view
         /// </summary>
@@ -240,6 +246,8 @@ namespace telemetry_update_removal
             {
                 int rowIndex = dgvTelemetryUpdates.Rows.Add(new string[] {
                     item.KB.ToString(), item.title.ToString(), "?", "?"});
+                if (!string.IsNullOrWhiteSpace(item.summary))
+                    dgvTelemetryUpdates.Rows[rowIndex].Cells[idxTitle].ToolTipText = item.summary;
                 dgvTelemetryUpdates.Rows[rowIndex].Cells[idxInstalled].Style.BackColor = System.Drawing.Color.Yellow;
                 dgvTelemetryUpdates.Rows[rowIndex].Cells[idxInstalled].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dgvTelemetryUpdates.Rows[rowIndex].Cells[idxBlocked].Style.BackColor = System.Drawing.Color.Yellow;
