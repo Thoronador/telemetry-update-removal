@@ -274,11 +274,11 @@ namespace telemetry_update_removal
             // 
             this.btnUninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUninstall.Enabled = false;
-            this.btnUninstall.Location = new System.Drawing.Point(481, 382);
+            this.btnUninstall.Location = new System.Drawing.Point(450, 382);
             this.btnUninstall.Name = "btnUninstall";
-            this.btnUninstall.Size = new System.Drawing.Size(82, 23);
+            this.btnUninstall.Size = new System.Drawing.Size(113, 23);
             this.btnUninstall.TabIndex = 4;
-            this.btnUninstall.Text = "Uninstall";
+            this.btnUninstall.Text = "Uninstall and hide";
             this.btnUninstall.UseVisualStyleBackColor = true;
             this.btnUninstall.Click += new System.EventHandler(this.btnUninstall_Click);
             // 

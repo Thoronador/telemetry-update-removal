@@ -334,6 +334,7 @@ namespace telemetry_update_removal
                 {
                     dgvTelemetryUpdates.Rows[i].Cells[idxBlocked].Value = "NO";
                     dgvTelemetryUpdates.Rows[i].Cells[idxBlocked].Style.BackColor = System.Drawing.Color.LightSalmon;
+                    enableUninstallButton = true;
                 }
             } //for
 
