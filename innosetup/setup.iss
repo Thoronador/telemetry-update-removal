@@ -6,7 +6,7 @@
 
 AppId={{5BC0FD8C-D9C2-4AC9-AC18-C8CF3456FF67}}
 AppName=Telemetry update removal
-AppVersion=0.3.6.0
+AppVersion=0.3.7.0
 AppPublisher=Thoronador
 AppPublisherURL=https://github.com/Thoronador/telemetry-update-removal
 AppSupportURL=https://github.com/Thoronador/telemetry-update-removal
@@ -30,10 +30,10 @@ Source: "..\telemetry-update-removal\updatelist.xml"; DestDir: "{app}"; Flags: i
 
 [Icons]
 ; Start Menu entry for the application itself
-Name: "{group}\Telemetry update removal 0.3.6"; Filename: "{app}\telemetry-update-removal.exe"
+Name: "{group}\Telemetry update removal 0.3.7"; Filename: "{app}\telemetry-update-removal.exe"
 ; Start Menu entry with parameters
 ; Name: "{group}\Telemetry update removal test"; Filename: "{app}\telemetry-update-removal.exe"; Parameters: "--test"
 ; Start Menu entry for uninstaller
-Name: "{group}\Uninstall Telemetry update removal 0.3.6"; Filename: "{app}\unins000.exe"
+Name: "{group}\Uninstall Telemetry update removal 0.3.7"; Filename: "{app}\unins000.exe"
 ; Desktopicon (if selected during install - default is unselected)
-Name: "{commondesktop}\Telemetry update removal 0.3.6"; Filename: "{app}\telemetry-update-removal.exe"; Tasks: desktopicon
+Name: "{commondesktop}\Telemetry update removal 0.3.7"; Filename: "{app}\telemetry-update-removal.exe"; Tasks: desktopicon
