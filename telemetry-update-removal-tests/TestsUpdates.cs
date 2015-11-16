@@ -31,7 +31,7 @@ namespace telemetry_update_removal_tests
         /// checks whether Updates.listHiddenUpdates() works and does not throw
         /// an exception
         /// </summary>
-        [Test, Category("NotForAppVeyor")]
+        [Test, Category("UsesWUApiLib")]
         public void Test_listHiddenUpdates()
         {
             List<telemetry_update_removal.UpdateInfo> list
@@ -48,7 +48,7 @@ namespace telemetry_update_removal_tests
         /// <summary>
         /// checks whether Updates.listInstalledUpdatesFromHistory() lists some updates
         /// </summary>
-        [Test, Category("NotForAppVeyor")]
+        [Test, Category("UsesWUApiLib")]
         public void Test_listInstalledUpdatesFromHistory()
         {
             List<telemetry_update_removal.UpdateOpInfo> list
@@ -63,7 +63,7 @@ namespace telemetry_update_removal_tests
         /// <summary>
         /// checks whether Updates.listUpdateHistory() list some updates
         /// </summary>
-        [Test, Category("NotForAppVeyor")]
+        [Test, Category("UsesWUApiLib")]
         public void Test_listUpdateHistory()
         {
             List<telemetry_update_removal.UpdateOpInfo> list

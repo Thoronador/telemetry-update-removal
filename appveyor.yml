@@ -52,7 +52,7 @@ build:
 test:
   categories:
     except:
-    - NotForAppVeyor
+    - UsesWUApiLib
 
 #---------------------------------#
 #        global handlers          #

@@ -39,7 +39,7 @@ namespace telemetry_update_removal_tests
         /// checks whether InstalledUpdates.getInstalledIDByKB() delivers the
         /// proper update IDs
         /// </summary>
-        [Test, Category("NotForAppVeyor")]
+        [Test, Category("UsesWUApiLib")]
         public void Test_getInstalledIDByKB()
         {
             telemetry_update_removal.InstalledUpdatesHistory instUpd = new telemetry_update_removal.InstalledUpdatesHistory();
@@ -73,7 +73,7 @@ namespace telemetry_update_removal_tests
         /// <summary>
         /// Checks whether InstalledUpdates.isInstalledByID() works as expected.
         /// </summary>
-        [Test, Category("NotForAppVeyor")]
+        [Test, Category("UsesWUApiLib")]
         public void Test_isInstalledByID()
         {
             telemetry_update_removal.InstalledUpdatesHistory instUpd = new telemetry_update_removal.InstalledUpdatesHistory();
@@ -109,7 +109,7 @@ namespace telemetry_update_removal_tests
         /// <summary>
         /// Checks whether isInstalledByKBNumber() works as expected.
         /// </summary>
-        [Test, Category("NotForAppVeyor")]
+        [Test, Category("UsesWUApiLib")]
         public void Test_isInstalledByKBNumber()
         {
             telemetry_update_removal.InstalledUpdatesHistory instUpd = new telemetry_update_removal.InstalledUpdatesHistory();
