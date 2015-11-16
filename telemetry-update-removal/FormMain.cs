@@ -422,5 +422,12 @@ namespace telemetry_update_removal
             tsmiUpdateHistory.Checked = true;
             tsmiWMIC.Checked = false;
         }
+
+        private void tsmiAbout_Click(object sender, EventArgs e)
+        {
+            FormAbout fa = new FormAbout();
+            fa.ShowDialog();
+            fa = null;
+        }
     } //class
 } //namespace

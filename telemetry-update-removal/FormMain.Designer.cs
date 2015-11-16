@@ -487,6 +487,7 @@ namespace telemetry_update_removal
             this.tsmiAbout.Name = "tsmiAbout";
             this.tsmiAbout.Size = new System.Drawing.Size(152, 22);
             this.tsmiAbout.Text = "About";
+            this.tsmiAbout.Click += new System.EventHandler(this.tsmiAbout_Click);
             // 
             // FormMain
             // 
