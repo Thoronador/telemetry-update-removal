@@ -29,7 +29,7 @@ namespace telemetry_update_removal_tests
         /// <summary>
         /// Checks whether isInstalledByKBNumber() works as expected.
         /// </summary>
-        [Test, Category("NotForAppVeyor")]
+        [Test]
         public void Test_isInstalledByKBNumber()
         {
             telemetry_update_removal.InstalledUpdatesWMIC instUpd = new telemetry_update_removal.InstalledUpdatesWMIC();
