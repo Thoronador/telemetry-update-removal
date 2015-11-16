@@ -263,7 +263,12 @@ namespace telemetry_update_removal
         private void btnListTelemetryUpdates_Click(object sender, EventArgs e)
         {
             disableListActionButtons();
-            InstalledUpdatesHistory instUpdates = new InstalledUpdatesHistory();
+            //initialize class for installed updates according to menu selection
+            InstalledUpdatesBase instUpdates = null;
+            if (tsmiUpdateHistory.Checked)
+                instUpdates = new InstalledUpdatesHistory();
+            else
+                instUpdates = new InstalledUpdatesWMIC();
 
             toolStripProgressBarMain.Style = ProgressBarStyle.Marquee;
             toolStripProgressBarMain.Visible = true;
@@ -399,6 +404,23 @@ namespace telemetry_update_removal
 
             enableListActionButtons();
             btnUninstall.Enabled = true;
+        }
+
+        private void tsmiExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void tsmiWMIC_Click(object sender, EventArgs e)
+        {
+            tsmiWMIC.Checked = true;
+            tsmiUpdateHistory.Checked = false;
+        }
+
+        private void tsmiUpdateHistory_Click(object sender, EventArgs e)
+        {
+            tsmiUpdateHistory.Checked = true;
+            tsmiWMIC.Checked = false;
         }
     } //class
 } //namespace

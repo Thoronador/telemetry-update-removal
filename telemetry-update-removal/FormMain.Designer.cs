@@ -78,6 +78,14 @@ namespace telemetry_update_removal
             this.statusStripMain = new System.Windows.Forms.StatusStrip();
             this.tsslMain = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBarMain = new System.Windows.Forms.ToolStripProgressBar();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsmiProgram = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDetectionMethod = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWMIC = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiUpdateHistory = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAboutMenuList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUpdates)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHiddenUpdates)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -86,6 +94,7 @@ namespace telemetry_update_removal
             this.tabPageInstalledHistory.SuspendLayout();
             this.tabPageHiddenUpdates.SuspendLayout();
             this.statusStripMain.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListInstalled
@@ -251,10 +260,10 @@ namespace telemetry_update_removal
             this.tabControl1.Controls.Add(this.tabPageTelemetryUpdates);
             this.tabControl1.Controls.Add(this.tabPageInstalledHistory);
             this.tabControl1.Controls.Add(this.tabPageHiddenUpdates);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(574, 434);
+            this.tabControl1.Size = new System.Drawing.Size(598, 428);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPageTelemetryUpdates
@@ -265,7 +274,7 @@ namespace telemetry_update_removal
             this.tabPageTelemetryUpdates.Controls.Add(this.btnListTelemetryUpdates);
             this.tabPageTelemetryUpdates.Location = new System.Drawing.Point(4, 22);
             this.tabPageTelemetryUpdates.Name = "tabPageTelemetryUpdates";
-            this.tabPageTelemetryUpdates.Size = new System.Drawing.Size(566, 408);
+            this.tabPageTelemetryUpdates.Size = new System.Drawing.Size(590, 402);
             this.tabPageTelemetryUpdates.TabIndex = 2;
             this.tabPageTelemetryUpdates.Text = "Telemetry updates";
             this.tabPageTelemetryUpdates.UseVisualStyleBackColor = true;
@@ -274,7 +283,7 @@ namespace telemetry_update_removal
             // 
             this.btnUninstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUninstall.Enabled = false;
-            this.btnUninstall.Location = new System.Drawing.Point(450, 382);
+            this.btnUninstall.Location = new System.Drawing.Point(474, 376);
             this.btnUninstall.Name = "btnUninstall";
             this.btnUninstall.Size = new System.Drawing.Size(113, 23);
             this.btnUninstall.TabIndex = 4;
@@ -309,7 +318,7 @@ namespace telemetry_update_removal
             this.dgvTelemetryUpdates.Name = "dgvTelemetryUpdates";
             this.dgvTelemetryUpdates.ReadOnly = true;
             this.dgvTelemetryUpdates.RowHeadersVisible = false;
-            this.dgvTelemetryUpdates.Size = new System.Drawing.Size(560, 354);
+            this.dgvTelemetryUpdates.Size = new System.Drawing.Size(584, 348);
             this.dgvTelemetryUpdates.TabIndex = 1;
             // 
             // colTelemetryKB
@@ -346,7 +355,7 @@ namespace telemetry_update_removal
             // btnListTelemetryUpdates
             // 
             this.btnListTelemetryUpdates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnListTelemetryUpdates.Location = new System.Drawing.Point(3, 382);
+            this.btnListTelemetryUpdates.Location = new System.Drawing.Point(3, 376);
             this.btnListTelemetryUpdates.Name = "btnListTelemetryUpdates";
             this.btnListTelemetryUpdates.Size = new System.Drawing.Size(174, 23);
             this.btnListTelemetryUpdates.TabIndex = 0;
@@ -365,7 +374,7 @@ namespace telemetry_update_removal
             this.tabPageInstalledHistory.Location = new System.Drawing.Point(4, 22);
             this.tabPageInstalledHistory.Name = "tabPageInstalledHistory";
             this.tabPageInstalledHistory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInstalledHistory.Size = new System.Drawing.Size(566, 408);
+            this.tabPageInstalledHistory.Size = new System.Drawing.Size(566, 336);
             this.tabPageInstalledHistory.TabIndex = 0;
             this.tabPageInstalledHistory.Text = "Installed / History";
             this.tabPageInstalledHistory.UseVisualStyleBackColor = true;
@@ -377,7 +386,7 @@ namespace telemetry_update_removal
             this.tabPageHiddenUpdates.Location = new System.Drawing.Point(4, 22);
             this.tabPageHiddenUpdates.Name = "tabPageHiddenUpdates";
             this.tabPageHiddenUpdates.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHiddenUpdates.Size = new System.Drawing.Size(566, 408);
+            this.tabPageHiddenUpdates.Size = new System.Drawing.Size(566, 336);
             this.tabPageHiddenUpdates.TabIndex = 1;
             this.tabPageHiddenUpdates.Text = "Hidden updates";
             this.tabPageHiddenUpdates.UseVisualStyleBackColor = true;
@@ -413,14 +422,82 @@ namespace telemetry_update_removal
             this.toolStripProgressBarMain.Name = "toolStripProgressBarMain";
             this.toolStripProgressBarMain.Size = new System.Drawing.Size(200, 16);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiProgram,
+            this.tsmiDetectionMethod,
+            this.tsmiAboutMenuList});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(598, 24);
+            this.menuStrip1.TabIndex = 10;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsmiProgram
+            // 
+            this.tsmiProgram.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiExit});
+            this.tsmiProgram.Name = "tsmiProgram";
+            this.tsmiProgram.Size = new System.Drawing.Size(59, 20);
+            this.tsmiProgram.Text = "Program";
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(152, 22);
+            this.tsmiExit.Text = "Exit";
+            this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
+            // 
+            // tsmiDetectionMethod
+            // 
+            this.tsmiDetectionMethod.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWMIC,
+            this.tsmiUpdateHistory});
+            this.tsmiDetectionMethod.Name = "tsmiDetectionMethod";
+            this.tsmiDetectionMethod.Size = new System.Drawing.Size(104, 20);
+            this.tsmiDetectionMethod.Text = "Detection method";
+            // 
+            // tsmiWMIC
+            // 
+            this.tsmiWMIC.Checked = true;
+            this.tsmiWMIC.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiWMIC.Name = "tsmiWMIC";
+            this.tsmiWMIC.Size = new System.Drawing.Size(297, 22);
+            this.tsmiWMIC.Text = "WMIC (slower, but more precise)";
+            this.tsmiWMIC.Click += new System.EventHandler(this.tsmiWMIC_Click);
+            // 
+            // tsmiUpdateHistory
+            // 
+            this.tsmiUpdateHistory.Name = "tsmiUpdateHistory";
+            this.tsmiUpdateHistory.Size = new System.Drawing.Size(297, 22);
+            this.tsmiUpdateHistory.Text = "Update history (faster, but might be incorrect)";
+            this.tsmiUpdateHistory.Click += new System.EventHandler(this.tsmiUpdateHistory_Click);
+            // 
+            // tsmiAboutMenuList
+            // 
+            this.tsmiAboutMenuList.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAbout});
+            this.tsmiAboutMenuList.Name = "tsmiAboutMenuList";
+            this.tsmiAboutMenuList.Size = new System.Drawing.Size(48, 20);
+            this.tsmiAboutMenuList.Text = "About";
+            // 
+            // tsmiAbout
+            // 
+            this.tsmiAbout.Name = "tsmiAbout";
+            this.tsmiAbout.Size = new System.Drawing.Size(152, 22);
+            this.tsmiAbout.Text = "About";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(598, 480);
             this.Controls.Add(this.statusStripMain);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl1);
-            this.MinimumSize = new System.Drawing.Size(400, 200);
+            this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(400, 220);
             this.Name = "FormMain";
             this.Text = "Telemetry update removal";
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -435,6 +512,8 @@ namespace telemetry_update_removal
             this.tabPageHiddenUpdates.ResumeLayout(false);
             this.statusStripMain.ResumeLayout(false);
             this.statusStripMain.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,6 +553,14 @@ namespace telemetry_update_removal
         private System.Windows.Forms.StatusStrip statusStripMain;
         private System.Windows.Forms.ToolStripStatusLabel tsslMain;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBarMain;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiProgram;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiDetectionMethod;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWMIC;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUpdateHistory;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAboutMenuList;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAbout;
     }
 }
 
