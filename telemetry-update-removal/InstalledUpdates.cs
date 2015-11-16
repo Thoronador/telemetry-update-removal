@@ -24,7 +24,7 @@ namespace telemetry_update_removal
     /// <summary>
     /// Provides functions to check whether a certain update is installed.
     /// </summary>
-    public class InstalledUpdates
+    public class InstalledUpdates: InstalledUpdatesBase
     {
         /// <summary>
         /// internal cache that lists the currently installed Microsoft updates
@@ -47,7 +47,7 @@ namespace telemetry_update_removal
         private void generateCache()
         {
             if (null == m_InstalledCache)
-                m_InstalledCache = Updates.listInstalledUpdates();
+                m_InstalledCache = Updates.listInstalledUpdatesFromHistory();
         }
 
 
@@ -78,7 +78,7 @@ namespace telemetry_update_removal
         /// <param name="KB">the knowledge base number</param>
         /// <returns>Returns true, if the update with the given KB is installed.
         /// Returns false, if the update is not installed.</returns>
-        public bool isInstalledByKBNumber(uint KB)
+        override public bool isInstalledByKBNumber(uint KB)
         {
             //Make sure we have an update cache for the search.
             generateCache();
@@ -109,46 +109,6 @@ namespace telemetry_update_removal
                     return item.ID;
             } //foreach
             return null;
-        }
-
-
-        /// <summary>
-        /// checks whether an update title contains a KB number
-        /// </summary>
-        /// <param name="title">full title of the update</param>
-        /// <param name="KB">knowledge base number</param>
-        /// <returns>Returns true, if the title contains the KB number.
-        /// Returns false otherwise.</returns>
-        public static bool titleMatchesKB(string title, uint KB)
-        {
-            if (string.IsNullOrWhiteSpace(title))
-                return false;
-
-            string search = "KB" + KB.ToString();
-            int searchLen = search.Length;
-            int pos = title.IndexOf(search);
-            if (pos >= 0)
-            {
-                //might be a match
-                int titleLen = title.Length;
-                if (pos + searchLen >= titleLen)
-                    //KB number is last part of title, i.e. we got the update
-                    return true;
-                //Is there more text?
-                if (pos + searchLen < titleLen)
-                {
-                    /* If the next character is not a digit, then we found
-                     * the exact KB number here. Otherwise it is another KB
-                     * number, because there are more digits.
-                     * This check is necessary to avoid false positives,
-                     * because otherwise we would return true (update found)
-                     * for "KB4321", although the string says "KB43215".
-                     */
-                    if (!Char.IsDigit(title[pos + searchLen]))
-                        return true;
-                } //if there is more text
-            } //if position is valid
-            return false;
         }
 
 

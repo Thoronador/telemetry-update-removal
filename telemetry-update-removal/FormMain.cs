@@ -62,7 +62,7 @@ namespace telemetry_update_removal
             resetButtonColours();
             disableListActionButtons();
             btnListInstalled.BackColor = System.Drawing.Color.Yellow;
-            var instUpd = Updates.listInstalledUpdates();
+            var instUpd = Updates.listInstalledUpdatesFromHistory();
             dgvUpdates.Rows.Clear();
             foreach (var item in instUpd)
             {

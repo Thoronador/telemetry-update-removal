@@ -46,13 +46,13 @@ namespace telemetry_update_removal_tests
 
 
         /// <summary>
-        /// checks whether Updates.listInstalledUpdates() lists some updates
+        /// checks whether Updates.listInstalledUpdatesFromHistory() lists some updates
         /// </summary>
         [Test, Category("NotForAppVeyor")]
-        public void Test_listInstalledUpdates()
+        public void Test_listInstalledUpdatesFromHistory()
         {
             List<telemetry_update_removal.UpdateOpInfo> list
-                = telemetry_update_removal.Updates.listInstalledUpdates();
+                = telemetry_update_removal.Updates.listInstalledUpdatesFromHistory();
             //list should not be null
             Assert.IsNotNull(list);
             //list should contain some elements

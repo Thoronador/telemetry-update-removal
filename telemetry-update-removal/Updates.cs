@@ -157,7 +157,7 @@ namespace telemetry_update_removal
         /// lists the installed updates (still experimental)
         /// </summary>
         /// <returns>returns a list of installed updates</returns>
-        public static List<UpdateOpInfo> listInstalledUpdates()
+        public static List<UpdateOpInfo> listInstalledUpdatesFromHistory()
         {
             UpdateSession session = new UpdateSession();
             IUpdateSearcher updateSearcher = session.CreateUpdateSearcher();

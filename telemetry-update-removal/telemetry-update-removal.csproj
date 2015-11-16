@@ -49,6 +49,7 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstalledUpdatesBase.cs" />
     <Compile Include="InstalledUpdates.cs" />
     <Compile Include="KBInfo.cs" />
     <Compile Include="KBInfoReader.cs" />
