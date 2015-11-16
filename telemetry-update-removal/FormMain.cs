@@ -263,7 +263,7 @@ namespace telemetry_update_removal
         private void btnListTelemetryUpdates_Click(object sender, EventArgs e)
         {
             disableListActionButtons();
-            InstalledUpdates instUpdates = new InstalledUpdates();
+            InstalledUpdatesHistory instUpdates = new InstalledUpdatesHistory();
 
             toolStripProgressBarMain.Style = ProgressBarStyle.Marquee;
             toolStripProgressBarMain.Visible = true;

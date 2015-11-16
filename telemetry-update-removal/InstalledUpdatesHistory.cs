@@ -16,7 +16,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using System;
 using System.Collections.Generic;
 
 namespace telemetry_update_removal
@@ -24,7 +23,7 @@ namespace telemetry_update_removal
     /// <summary>
     /// Provides functions to check whether a certain update is installed.
     /// </summary>
-    public class InstalledUpdates: InstalledUpdatesBase
+    public class InstalledUpdatesHistory: InstalledUpdatesBase
     {
         /// <summary>
         /// internal cache that lists the currently installed Microsoft updates
@@ -34,7 +33,7 @@ namespace telemetry_update_removal
         /// <summary>
         /// default constructor
         /// </summary>
-        public InstalledUpdates()
+        public InstalledUpdatesHistory()
         {
             //Set cache to null and create it just on demand.
             m_InstalledCache = null;

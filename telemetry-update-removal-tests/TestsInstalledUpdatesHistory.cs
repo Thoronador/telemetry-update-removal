@@ -21,17 +21,17 @@ using NUnit.Framework;
 namespace telemetry_update_removal_tests
 {
     /// <summary>
-    /// Class that contains tests for the InstalledUpdates class.
+    /// Class that contains tests for the InstalledUpdatesHistory class.
     /// </summary>
     [TestFixture]
-    public class TestsInstalledUpdates
+    public class TestsInstalledUpdatesHistory
     {
         [Test]
         public void Test_clearCache()
         {
             /* Inconclusive, because the cache is a private variable and cannot
              * be checked directly. */
-            Assert.Inconclusive("Cannot test InstalledUpdates.clearCache() yet.");
+            Assert.Inconclusive("Cannot test InstalledUpdatesHistory.clearCache() yet.");
         }
 
 
@@ -42,7 +42,7 @@ namespace telemetry_update_removal_tests
         [Test, Category("NotForAppVeyor")]
         public void Test_getInstalledIDByKB()
         {
-            telemetry_update_removal.InstalledUpdates instUpd = new telemetry_update_removal.InstalledUpdates();
+            telemetry_update_removal.InstalledUpdatesHistory instUpd = new telemetry_update_removal.InstalledUpdatesHistory();
 
             //There is no KB ID zero, so there should be no ID for that.
             Assert.IsNull(instUpd.getInstalledIDByKB(0));
@@ -76,7 +76,7 @@ namespace telemetry_update_removal_tests
         [Test, Category("NotForAppVeyor")]
         public void Test_isInstalledByID()
         {
-            telemetry_update_removal.InstalledUpdates instUpd = new telemetry_update_removal.InstalledUpdates();
+            telemetry_update_removal.InstalledUpdatesHistory instUpd = new telemetry_update_removal.InstalledUpdatesHistory();
 
             //There is no empty ID, so there should be no installed update for that.
             Assert.IsFalse(instUpd.isInstalledByID(""));
@@ -112,7 +112,7 @@ namespace telemetry_update_removal_tests
         [Test, Category("NotForAppVeyor")]
         public void Test_isInstalledByKBNumber()
         {
-            telemetry_update_removal.InstalledUpdates instUpd = new telemetry_update_removal.InstalledUpdates();
+            telemetry_update_removal.InstalledUpdatesHistory instUpd = new telemetry_update_removal.InstalledUpdatesHistory();
 
             //There is no KB ID zero, so there should be no installed update for that.
             Assert.IsFalse(instUpd.isInstalledByKBNumber(0));
@@ -133,44 +133,6 @@ namespace telemetry_update_removal_tests
                 || instUpd.isInstalledByKBNumber(3087039)
                 || instUpd.isInstalledByKBNumber(3081455));
             instUpd = null;
-        }
-
-
-        /// <summary>
-        /// checks whether InstalledUpdates.titleMatchesKB() works as expected
-        /// </summary>
-        [Test]
-        public void Test_titleMatchesKB()
-        {
-            //Positive return values:
-            Assert.IsTrue(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "Windows-Tool zum Entfernen bösartiger Software - Dezember 2014 (KB890830)",
-                890830));
-            Assert.IsTrue(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "Definition Update for Windows Defender - KB915597 (Definition 1.199.1468.0)",
-                915597));
-            Assert.IsTrue(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "Update für Windows Vista (KB3020338)", 3020338));
-            
-            //Negative return values:
-            Assert.IsFalse(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "Update für Windows Vista (KB3020338)", 3020));
-            Assert.IsFalse(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "Update für Windows Vista (KB3020338)", 30203));
-            Assert.IsFalse(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "Update für Windows Vista (KB3020338)", 302033));
-            Assert.IsFalse(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "Update für Windows Vista (3020338)", 3020338));
-            Assert.IsFalse(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "There is no KB ID here", 12345));
-            
-            //null, empty, whitespace tests
-            Assert.IsFalse(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                null, 1234));
-            Assert.IsFalse(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "", 1234));
-            Assert.IsFalse(telemetry_update_removal.InstalledUpdates.titleMatchesKB(
-                "     \t \r\n \v  ", 1234));
         }
     } //class
 } //namespace

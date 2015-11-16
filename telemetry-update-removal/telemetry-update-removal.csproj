@@ -50,7 +50,7 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="InstalledUpdatesBase.cs" />
-    <Compile Include="InstalledUpdates.cs" />
+    <Compile Include="InstalledUpdatesHistory.cs" />
     <Compile Include="KBInfo.cs" />
     <Compile Include="KBInfoReader.cs" />
     <Compile Include="Program.cs" />
