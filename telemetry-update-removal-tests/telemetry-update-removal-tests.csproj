@@ -54,6 +54,7 @@
     <Compile Include="TestsInstalledUpdatesHistory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestsInstalledUpdatesWMIC.cs" />
     <Compile Include="TestsKBInfoReader.cs" />
     <Compile Include="TestsUpdates.cs" />
   </ItemGroup>
