@@ -22,6 +22,8 @@ namespace telemetry_update_removal
 {
     /// <summary>
     /// Provides functions to check whether a certain update is installed.
+    /// This variant uses the WUApiLib's update history to check for installed
+    /// updates.
     /// </summary>
     public class InstalledUpdatesHistory: InstalledUpdatesBase
     {

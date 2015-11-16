@@ -38,6 +38,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -51,6 +52,7 @@
     </Compile>
     <Compile Include="InstalledUpdatesBase.cs" />
     <Compile Include="InstalledUpdatesHistory.cs" />
+    <Compile Include="InstalledUpdatesWMIC.cs" />
     <Compile Include="KBInfo.cs" />
     <Compile Include="KBInfoReader.cs" />
     <Compile Include="Program.cs" />
