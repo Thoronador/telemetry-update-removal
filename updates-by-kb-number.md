@@ -106,6 +106,12 @@ the update.
       existing devices. This service provides benefits from the latest version
       of Windows to systems that have not yet upgraded._
 
+* **[KB3123862](https://support.microsoft.com/en-us/kb/3123862)**
+  "Updated capabilities to upgrade Windows 8.1 and Windows 7"
+
+    > _This update adds capabilities to some computers that lets users easily
+      learn about Windows 10 or start an upgrade to Windows 10._
+
 
 ## Uninstall via command line
 

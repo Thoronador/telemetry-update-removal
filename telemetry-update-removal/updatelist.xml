@@ -105,4 +105,9 @@
       existing devices. This service provides benefits from the latest version
       of Windows to systems that have not yet upgraded.</summary>
   </kb>
+  <kb id="3123862">
+    <short>Updated capabilities to upgrade Windows 8.1 and Windows 7</short>
+	<summary>This update adds capabilities to some computers that lets users easily
+      learn about Windows 10 or start an upgrade to Windows 10.</summary>
+  </kb>
 </updates>
